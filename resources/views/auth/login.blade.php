@@ -38,14 +38,6 @@
                             <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Log In</button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                            <div class="social">
-                                <button class="btn  btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fab fa-facebook-f"></i> </button>
-                                <button class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i aria-hidden="true" class="fab fa-google-plus-g"></i> </button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
                             Don't have an account? <a href="pages-register.html" class="text-info m-l-5"><b>Sign Up</b></a>
