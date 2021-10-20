@@ -1,24 +1,19 @@
 @extends('layout.index')
 @section('content')
-  <div class="preloader">
-    <div class="loader">
-        <div class="loader__figure"></div>
-        <p class="loader__label">Solver Or Solver</p>
-    </div>
-  </div>
+  @include('common.preloader')
   <section id="wrapper">
-    <div class="login-register" style="background-image:url(../assets/images/background/background___.jpg);">
+    <div class="login-register" style="background-image:url(../assets/images/background/background_.jpg);">
         <div class="login-box card">
             <div class="card-body">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form class="form-horizontal form-material">
                     <h3 class="text-center m-b-20">Entrar</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Nome do usuário"> </div>
+                            <input class="form-control" type="text" required="" placeholder="Nome do usuário" id="login_name"> </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Senha"> </div>
+                            <input class="form-control" type="password" required="" placeholder="Senha" id="login_password"> </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
@@ -35,7 +30,7 @@
                     </div>
                     <div class="form-group text-center">
                         <div class="col-xs-12 p-b-20">
-                            <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Conecte-se</button>
+                            <button class="btn btn-block btn-lg btn-info btn-rounded" type="button" onclick="SignIn()">Conecte-se</button>
                         </div>
                     </div>
                     <div class="form-group m-b-0">
@@ -73,4 +68,11 @@
         </div>
     </div>
   </section>
+  <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+  <script>
+    function SignIn() {
+      console.log('login');
+      document.location.href = "/dashboard"
+    }
+  </script>
 @endsection
