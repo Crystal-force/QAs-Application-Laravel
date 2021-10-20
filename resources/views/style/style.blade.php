@@ -1,8 +1,13 @@
 <!-- page css -->
 <link href="dist/css/pages/login-register-lock.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/node_modules/html5-editor/bootstrap-wysihtml5.css" />
+<link rel="stylesheet" href="../assets/node_modules/dropify/dist/css/dropify.min.css">
 <!-- Custom CSS -->
 <link href="dist/css/style.min.css" rel="stylesheet">
 <link href="dist/css/define.css" rel="stylesheet">
+
+
+
 
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
