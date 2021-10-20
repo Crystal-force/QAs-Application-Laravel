@@ -8,9 +8,9 @@
         @include('common.aside-menu')
 
         <div class="question-background" >
-            <div class="container-fluid mt-5">
+            <div class="container mt-5">
               <div class="row question-text">
-                  <div class="col-8">
+                  <div class="col-12">
                       <div class="card">
                           <div class="card-body">
                               <form method="post">
@@ -21,7 +21,7 @@
                   </div>
               </div>
               <div class="row">
-                <div class="col-8 file-upload-area">
+                <div class="col-12 file-upload-area">
                   <div class="row">
                     <div class="col-12 file-upload-blog">
                       <div class="col-4">
@@ -36,6 +36,16 @@
                         <p class="upload-text">Please upload the image</p>
                         <input type="file" id="input-file-now" class="dropify" />
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="post-btn mt-3">
+                    <div class="col-lg-2 col-md-4">
+                      <button type="button" class="btn btn-rounded btn-block btn-info">Post Question</button>
                     </div>
                   </div>
                 </div>
