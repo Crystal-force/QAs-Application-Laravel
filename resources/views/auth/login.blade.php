@@ -7,57 +7,65 @@
     </div>
   </div>
   <section id="wrapper">
-    <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+    <div class="login-register" style="background-image:url(../assets/images/background/background___.jpg);">
         <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" action="index.html">
-                    <h3 class="text-center m-b-20">Sign In</h3>
+                    <h3 class="text-center m-b-20">Entrar</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Username"> </div>
+                            <input class="form-control" type="text" required="" placeholder="Nome do usuário"> </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Password"> </div>
+                            <input class="form-control" type="password" required="" placeholder="Senha"> </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="d-flex no-block align-items-center">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Remember me</label>
+                                    <label class="custom-control-label" for="customCheck1">Lembre de mim</label>
                                 </div> 
                                 <div class="ml-auto">
-                                    <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Forgot pwd?</a> 
+                                    <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Esqueci o pwd?</a> 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group text-center">
                         <div class="col-xs-12 p-b-20">
-                            <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Log In</button>
+                            <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Conecte-se</button>
                         </div>
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            Don't have an account? <a href="pages-register.html" class="text-info m-l-5"><b>Sign Up</b></a>
+                          Você não tem uma conta? <a href="{{route('reigster')}}" class="text-info m-l-5"><b>Inscrever-se</b></a>
                         </div>
                     </div>
                 </form>
                 <form class="form-horizontal" id="recoverform" action="index.html">
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <h3>Recover Password</h3>
-                            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+                            <h3>Recuperar senha</h3>
+                            <p class="text-muted">Digite seu e-mail e as instruções serão enviadas para você!</p>
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email"> </div>
+                            <input class="form-control" type="text" required="" placeholder="O email"> </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Nova Senha"> </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Confirme a Senha"> </div>
                     </div>
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
-                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
+                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Redefinir</button>
                         </div>
                     </div>
                 </form>
