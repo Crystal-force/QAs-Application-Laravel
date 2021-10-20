@@ -14,7 +14,7 @@
     
     @include('style.style')
   </head>
-  <body>
+  <body class="horizontal-nav boxed skin-megna fixed-layout">
     @yield('content')
     @include('script.script')
   </body>
