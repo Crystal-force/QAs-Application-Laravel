@@ -21,3 +21,4 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/register', 'Auth\RegisterController@index')->name('reigster');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/question', 'QuestionController@index')->name('question');
