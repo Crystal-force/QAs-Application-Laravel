@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,8 +14,9 @@
     
     @include('style.style')
   </head>
-  <body class="skin-default card-no-border">
+  <body>
     @yield('content')
-  </body>
     @include('script.script')
+  </body>
+
 </html>
