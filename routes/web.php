@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/register', 'Auth\RegisterController@index')->name('reigster');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/subject', 'SubjectController@index')->name('subject');
 Route::get('/question', 'QuestionController@index')->name('question');
 Route::get('/answers', 'AnswerController@index')->name('answers');
+Route::get('/answer-detail', 'AnswerController@detail');

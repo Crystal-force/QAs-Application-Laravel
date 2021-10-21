@@ -2,7 +2,7 @@
 @section('content')
 
     @include('common.preloader')
-    <div id="main-wrapper">
+    <div >
       
         @include('common.top-header')
         @include('common.aside-menu')
@@ -12,7 +12,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('dashboard')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New</a>
+                          <a href="{{route('subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New</a>
                       </div>
                   </div>
               </div>
@@ -26,14 +26,24 @@
                         <div class="card-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-body">
-                                    <div class="row">
+                                    <h3>Laravel 5.4 Specific Table Migration</h3>
+                                    <hr class="m-t-0 m-b-5">
+                                    <div class="row mt-5">
                                         <div class="col-md-12">
                                             <div class="form-group row">
-                                                <div class="col-md-9">
-                                                    <p class="form-control-static"> </p>
+                                                <div class="col-md-12">
+                                                    <p class="form-control-static">Hi read all the included documentation here in https://laravel.com/docs/5.4/migrations.
+                                                      Is there a way on how to migrate a certain migration file (1 migration only), cause right now every time there is a change I use php artisan migrate:refresh and all fields are getting res </p>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <label><i class="fa fa-paperclip m-r-10 m-b-10"></i>Attachments</label>
+                                        <p class="file-name"><span class="mr-2">test.doc, test.pdf, test.png</p>
+                                       
+                                      </div>
                                     </div>
                                     <hr class="m-t-0 m-b-0">
                                 </div>
@@ -44,62 +54,63 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header bg-info">
-                            <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers</h4>
+                            <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers(3)</h4>
                         </div>
                         <div class="card-body">
-                          <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Answers</th>
-                                        <th>Users</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="answer-table">
-                                    <tr>
-                                      <td class="aws-content">Lunar probe project</td>
-                                      <td class="aws-name">by Jose</td>
-                                      <td class="aws-show"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                          <div class="answer-blog p-3">
+                            <div class="d-flex mb-2">
+                              <div>
+                                  <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle" /></a>
+                              </div>
+                              <div class="p-l-10">
+                                  <h4 class="m-b-0">Pavan kumar</h4>
+                                  <small class="text-muted">From: jonathan@domain.com</small>
+                              </div>
+                            </div>
+                            <div class="">
+                              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+                              <p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
+                            </div>
                           </div>
+                          <hr class="mt-4 mb-4">
+                          <div class="answer-blog p-3">
+                            <div class="d-flex mb-2">
+                              <div>
+                                  <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle" /></a>
+                              </div>
+                              <div class="p-l-10">
+                                  <h4 class="m-b-0">Pavan kumar</h4>
+                                  <small class="text-muted">From: jonathan@domain.com</small>
+                              </div>
+                            </div>
+                            <div class="each-aws-content p-2 ">
+                              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+                              <p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
+                            </div>
+                          </div>
+                          <hr class="mt-4 mb-4">
+                          <div class="answer-blog p-3">
+                            <div class="d-flex mb-2">
+                              <div>
+                                  <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle" /></a>
+                              </div>
+                              <div class="p-l-10">
+                                  <h4 class="m-b-0">Pavan kumar</h4>
+                                  <small class="text-muted">From: jonathan@domain.com</small>
+                              </div>
+                            </div>
+                            <div class="each-aws-content p-2 ">
+                              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+                              <p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
+                            </div>
+                          </div>
+                          <hr class="mt-4 mb-4">
                         </div>
                     </div>
                 </div>
               </div>
-              
-              
           </div>
         </div>
         @include('common.footer')
-    </div>
-    
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h4 class="modal-title" id="exampleModalLabel1">New message</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              </div>
-              <div class="modal-body">
-                  <form>
-                      <div class="form-group">
-                          <label for="recipient-name" class="control-label">Recipient:</label>
-                          <input type="text" class="form-control" id="recipient-name1">
-                      </div>
-                      <div class="form-group">
-                          <label for="message-text" class="control-label">Message:</label>
-                          <textarea class="form-control" id="message-text1"></textarea>
-                      </div>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Send message</button>
-              </div>
-          </div>
-      </div>
     </div>
 @endsection

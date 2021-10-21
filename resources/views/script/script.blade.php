@@ -16,6 +16,10 @@
     <!-- wysuhtml5 Plugin JavaScript -->
     <script src="../assets/node_modules/tinymce/tinymce.min.js"></script>
     <script src="../assets/node_modules/dropify/dist/js/dropify.min.js"></script>
+    <script src="dist/js/pages/jasny-bootstrap.js"></script>
+    <script src="../assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="../assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script src="../assets/node_modules/dropzone-master/dist/dropzone.js"></script>
 
     <!--Custom JavaScript -->
     <script type="text/javascript">

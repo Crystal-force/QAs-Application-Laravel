@@ -12,7 +12,7 @@
                       <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
                   </ul>
               </li>
-              <li> <a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="icon-speedometer"></i>Subject</a></li>
+              <li> <a class="waves-effect waves-dark" href="{{route('subject')}}" aria-expanded="false"><i class="icon-speedometer"></i>Subject</a></li>
               <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i>Question List</a></li>
               <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i>Answer List</a></li>
           </ul>
