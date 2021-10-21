@@ -67,3 +67,12 @@
   display: flex;
   justify-content: center;
 }
+.aws-content {
+  width: 75%;
+}
+.aws-name {
+  width: 15%
+}
+.aws-show {
+  width: 10%;
+}

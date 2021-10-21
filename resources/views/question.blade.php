@@ -45,7 +45,7 @@
                 <div class="col-12">
                   <div class="post-btn mt-3">
                     <div class="col-lg-2 col-md-4">
-                      <button type="button" class="btn btn-rounded btn-block btn-info">Post Question</button>
+                      <button type="button" class="btn btn-rounded btn-block btn-info" onclick="Post_Question()">Post Question</button>
                     </div>
                   </div>
                 </div>
@@ -115,5 +115,9 @@
               }
           })
       });
+
+      function Post_Question() {
+        document.location.href = '/answers'
+      }
     </script>
 @endsection
