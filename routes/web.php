@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/register', 'Auth\RegisterController@index')->name('reigster');
 
-Route::get('/subject', 'SubjectController@index')->name('subject');
+Route::get('/select-category', 'CategoryController@index')->name('select-category');
+Route::get('/ask-subject', 'SubjectController@index')->name('ask-subject');
+Route::get('/solution-subject', 'SubjectController@solutionsubject')->name('solution-subject');
 Route::get('/question', 'QuestionController@index')->name('question');
 Route::get('/answers', 'AnswerController@index')->name('answers');
-Route::get('/answer-detail', 'AnswerController@detail');
+Route::get('/allquestions', 'QuestionController@allquestions')->name('allquestions');

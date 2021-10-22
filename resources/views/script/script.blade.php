@@ -20,6 +20,10 @@
     <script src="../assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
     <script src="../assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
     <script src="../assets/node_modules/dropzone-master/dist/dropzone.js"></script>
+    
+    <script src="../assets/node_modules/datatables/datatables.min.js"></script>
+
+    
 
     <!--Custom JavaScript -->
     <script type="text/javascript">

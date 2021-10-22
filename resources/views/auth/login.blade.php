@@ -72,7 +72,7 @@
   <script>
     function SignIn() {
       console.log('login');
-      document.location.href = "/subject"
+      document.location.href = "/select-category"
     }
   </script>
 @endsection

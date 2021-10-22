@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AnswerController extends Controller
+class CategoryController extends Controller
 {
     public function index() {
-        return view('answers');
+        return view('select');
     }
 }
