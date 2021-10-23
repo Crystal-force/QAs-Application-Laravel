@@ -10,4 +10,8 @@ class RegisterController extends Controller
     public function index() {
         return view('auth.register');
     }
+
+    public function account_setting() {
+        return view('account-setting');
+    }
 }

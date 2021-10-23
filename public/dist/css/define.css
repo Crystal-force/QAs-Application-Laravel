@@ -98,6 +98,25 @@
   justify-content: center;
   align-items: center;
 }
+.math-solution-background {
+  flex: 1;
+  background-image: url('../../assets/images/background/background_question.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+.sm-question-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.each-question {
+  cursor: pointer;
+}
 .post-card {
   margin-top: 1rem;
 }
