@@ -12,7 +12,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New</a>
+                          <a href="{{route('answers')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New</a>
                       </div>
                   </div>
               </div>
