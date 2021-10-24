@@ -32,4 +32,9 @@ class LoginController extends Controller
             return response()->json(['data' => '0']);
         }
     }
+
+    public function logout() {
+        Auth::logout();
+        return Redirect::to('/');
+    }
 }
