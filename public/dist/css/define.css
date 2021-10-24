@@ -43,11 +43,63 @@
   background-image: url('../../assets/images/background/background_question.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
   overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.che-question-background {
+  flex: 1;
+  background-image: url('../../assets/images/background/image_(4).png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bio-question-background {
+  flex: 1;
+  background-image: url('../../assets/images/background/bio-question-bg.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.his-question-background {
+  flex: 1;
+  background-image: url('../../assets/images/background/histofy.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.geo-question-background {
+  flex: 1;
+  background-image: url('../../assets/images/background/image(9).png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.eng-question-background {
+  flex: 1;
+  background-image: url('../../assets/images/background/image(11).png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-card {
+  margin-top: 1rem;
 }
 .question-text {
   justify-content: center;
@@ -61,4 +113,82 @@
 .upload-text {
   text-align: center;
   
+}
+.post-btn {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.aws-content {
+  width: 75%;
+}
+.aws-name {
+  width: 15%
+}
+.aws-show {
+  width: 10%;
+}
+.file-name {
+  font-size: 14px;
+}
+.file-name span {
+  font-weight: 500;
+}
+.answer-blog {
+  background-color: rgba(248, 246, 248, 0.918);
+}
+.login-bar {
+  display: flex;
+  align-items: center;
+  color:white !important
+}
+.category-area {
+  display: flex;
+  align-items: center;
+}
+.question-icon{
+  font-size: 100px;
+}
+.ask-font {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.ask-category  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#00c292;
+  text-align: center;
+}
+.ask-category:hover  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#0adfa9;
+  text-align: center;
+}
+.solution-font {
+  font-size: 48px;
+  font-weight: 700;
+}
+.solution-icon {
+  font-size: 100px;
+}
+.soluction-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#f86c6b;
+  text-align: center;
+}
+.soluction-category:hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#fa8484;
+  text-align: center;
+}
+.answer-area {
+  display: none;
 }

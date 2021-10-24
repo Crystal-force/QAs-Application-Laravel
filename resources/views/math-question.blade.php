@@ -14,14 +14,14 @@
                   <div class="row question-text">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Postar pergunta</h3>
+                        <h3 class="card-title">Matemática pergunta</h3>
                         <button type="button" class="btn waves-effect waves-light btn-rounded btn-info" onclick="Post_Question()">Pergantar</button>
                       </div>
                       <div class="form-group mt-2">
                           <input class="form-control" placeholder="Título:">
                       </div>
                       <div class="form-group">
-                          <textarea class="textarea_editor form-control" rows="15" placeholder="Digite o texto ..."></textarea>
+                          <textarea class="textarea_editor form-control" rows="10" placeholder="Digite o texto ..."></textarea>
                       </div>
                       <h4><i class="ti-link"></i> Acessório</h4>
                       <form action="#" class="dropzone">

@@ -2,7 +2,7 @@
 @section('content')
 
     @include('common.preloader')
-    <div id="main-wrapper" class="dashboard-area">
+    <div class="dashboard-area">
       
         @include('common.top-header')
         @include('common.aside-menu')
@@ -11,7 +11,7 @@
             <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="subject-title">Please choose the subject for your question</h3>
+                        <h3 class="subject-title">Escolha o assunto que deseja perguntar</h3>
                     </div>
                 </div>
             </div>
