@@ -36,12 +36,18 @@
                                             <tr>
                                                 <td class="align-middle">Vertical align in bootstrap table</td>
                                                 <td class="align-middle" style="text-align: center">2011/04/25</td>
-                                                <td class="align-middle" style="text-align: center"><button class="btn btn-twitter waves-effect waves-light" type="button" data-id="1" onclick="ShowAnswer(this)"> <i class="fas fa-eye"></i> </button></td>
+                                                <td class="align-middle" style="text-align: center">
+                                                    <a href="javascript:;" data-toggle="tooltip" title="Mostre a resposta detalhada" onclick="ShowAnswer(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
+                                                    <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="align-middle">Vertical align in bootstrap table</td>
                                                 <td class="align-middle" style="text-align: center">2011/07/25</td>
-                                                <td class="align-middle" style="text-align: center"><button class="btn btn-twitter waves-effect waves-light" type="button"> <i class="fas fa-eye"></i> </button></td>
+                                                <td class="align-middle" style="text-align: center">
+                                                    <a href="javascript:;" data-toggle="tooltip" title="Mostre a resposta detalhada" onclick="ShowAnswer(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
+                                                    <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

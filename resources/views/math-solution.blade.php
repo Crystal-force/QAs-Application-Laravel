@@ -9,7 +9,7 @@
 
         <div class="math-solution-background" >
             <div class="container-fluid mt-2">
-                <h3 class="card-title" style="color:white; text-align:center">Perguntas e respostas para matemática</h3>
+                <h3 class="card-title" style="color:white; text-align:center; font-weight:600">Perguntas e respostas para matemática</h3>
                 <div class="row col-12">
                     <div class="col-6">
                       <div class="card">
@@ -44,7 +44,7 @@
                                           </td>
                                           <td class="align-middle"><p>10/18/2021</p></td>
                                           <td class="align-middle">
-                                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#questionReplyModal" data-whatever="reply"><i class="fas fa-reply"></i></button>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#questionReplyModal" data-whatever="reply"><i class="fas fa-reply"></i></button>
                                           </td>
                                       </tr>
                                       <tr class="each-question">
@@ -102,7 +102,8 @@
                                             <span class="label label-danger">respondeu</span>
                                           </td>
                                           <td class="align-middle">
-                                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply"><i class="fas fa-eye"></i></button>
+                                              <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply"><i class="fas fa-eye text-success show-icon"></i> </a>
+                                              <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
                                           </td>
                                       </tr>
                                   </tbody>
