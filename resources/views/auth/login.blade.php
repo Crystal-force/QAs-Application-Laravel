@@ -5,15 +5,20 @@
     <div class="login-register" style="background-image:url(../assets/images/background/background_.jpg);">
         <div class="login-box card">
             <div class="card-body">
+                <h3 class="text-center m-b-20">Entrar</h3>
                 <form class="form-horizontal form-material">
-                    <h3 class="text-center m-b-20">Entrar</h3>
+                    <p class="register-alert" id="fault_login">As informações de login são falhas.</p>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Nome do usuário" id="login_name"> </div>
+                            <input class="form-control" type="text" required="" placeholder="O email" id="login_email"> 
+                            <p class="register-alert" id="email_alert">E-mail incorreto</p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Senha" id="login_password"> </div>
+                            <input class="form-control" type="password" required="" placeholder="Senha" id="login_password"> 
+                            <p class="register-alert" id="pwd_alert">Senha incorreta</p>
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
@@ -26,6 +31,7 @@
                                     <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Esqueci o pwd?</a> 
                                 </div>
                             </div>
+                            <p class="register-alert" id="check_alert">Por favor, checar isto.</p>
                         </div>
                     </div>
                     <div class="form-group text-center">
@@ -71,8 +77,63 @@
   <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
   <script>
     function SignIn() {
-      console.log('login');
-      document.location.href = "/select-category"
+        var check_status = "";
+        var email = $('#login_email').val();
+        var password = $('#login_password').val();
+      
+        if ($('#customCheck1').is(":checked"))
+        {
+            check_status = '1';
+        }
+        else {
+            check_status = '0';
+        }
+        
+        if(email == "" && password != "") {
+            $("#email_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow');
+        }
+        else if(email != "" && password == "") {
+            $("#pwd_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
+        }
+        else if(email == "" && password == "") {
+            $("#email_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow');
+            $("#pwd_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
+        }
+        else if(email !="" && password != "" && check_status == '0') {
+            $("#check_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
+        }
+
+        if ($('#customCheck1').is(":checked")) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '/login',
+                method: 'POST',
+                data: {
+                    email: email,
+                    password: password
+                },
+                dataType: false,
+                success: function(data) {
+                    if(data.data == "1") {
+                        window.location.href="/select-category"
+                    }
+                    else if(data.data == "0") {
+                        $("#fault_login").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
+                    }
+                }
+            });
+        }
+        
+
+
+        
+      
+    //   document.location.href = "/select-category"
     }
   </script>
 @endsection

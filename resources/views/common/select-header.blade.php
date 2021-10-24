@@ -40,7 +40,7 @@
               <!-- Comment -->
               <!-- ============================================================== -->
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle waves-effect waves-dark login-bar" href="/"> <i class="fas fa-power-off"></i>
+                  <a class="nav-link dropdown-toggle waves-effect waves-dark login-bar" href="/logout"> <i class="fas fa-power-off"></i>
                   </a>
               </li>
           </ul>

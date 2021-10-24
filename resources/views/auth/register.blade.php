@@ -132,7 +132,7 @@
                 dataType: false,
                 success: function(data) {
                     if(data.data == '1') {
-                        window.location.href = "/select-category"
+                        window.location.href = "/login"
                     }
                     else if(data.data == "0") {
                         $("#fault_register").delay(5).fadeIn('slow').delay(1500).fadeOut('slow');
