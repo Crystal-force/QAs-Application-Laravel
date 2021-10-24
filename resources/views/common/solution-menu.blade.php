@@ -13,10 +13,10 @@
                   </ul>
               </li>
               <li> <a class="waves-effect waves-dark" href="{{route('select-category')}}" aria-expanded="false"><i class="icon-speedometer"></i>Dashboard</a></li>
-              <li> <a class="waves-effect waves-dark" href="{{route('ask-subject')}}" aria-expanded="false"><i class="fas fa-list-ul"></i>Subject</a></li>
+              <li> <a class="waves-effect waves-dark" href="{{route('solution-subject')}}" aria-expanded="false"><i class="fas fa-list-ul"></i>Subject</a></li>
               <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-question"></i><span class="hide-menu">Question/Answer Management</span></a>
                 <ul aria-expanded="false" class="collapse">
-                    <li><a href="{{route('allquestions')}}">All Questions/Answers</a></li>
+                    <li><a href="{{route('allquestions')}}">My Questions/Answers</a></li>
                 </ul>
               </li>
               <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">Setting</span></a>
