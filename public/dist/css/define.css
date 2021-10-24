@@ -217,3 +217,9 @@
 .show-icon {
   font-size: 18px;
 }
+#check_password {
+  display: none;
+}
+#fault_register {
+  display: none;
+}
