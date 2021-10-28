@@ -6,6 +6,7 @@
 <!-- Dropzone css -->
 <link href="../assets/node_modules/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
 <link href="../assets/node_modules/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link href="../assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
 <!-- Custom CSS -->
 <link href="dist/css/style.min.css" rel="stylesheet">
 <link href="dist/css/pages/floating-label.css" rel="stylesheet">

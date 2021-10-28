@@ -120,7 +120,19 @@
                 dataType: false,
                 success: function(data) {
                     if(data.data == "1") {
-                        window.location.href="/select-category"
+                        $.toast({
+                            heading: 'Bem-vindo ao Silver Or Silver',
+                            text: 'O login foi bem-sucedido.',
+                            position: 'top-right',
+                            loaderBg:'#ff6849',
+                            icon: 'success',
+                            hideAfter: 3000, 
+                            stack: 6
+                        });
+
+                        setTimeout(function() { 
+                            window.location.href="/select-category"
+                        }, 3000);
                     }
                     else if(data.data == "0") {
                         $("#fault_login").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
