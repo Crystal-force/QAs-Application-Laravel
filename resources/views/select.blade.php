@@ -5,7 +5,6 @@
     <div class="dashboard-area">
       
         @include('common.select-header')
-
         <div class="dashboard-background category-area">
             <div class="container">
               <div class="row col-12">

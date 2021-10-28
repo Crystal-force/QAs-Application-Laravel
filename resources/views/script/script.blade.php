@@ -22,6 +22,8 @@
     <script src="../assets/node_modules/dropzone-master/dist/dropzone.js"></script>
     
     <script src="../assets/node_modules/datatables/datatables.min.js"></script>
+    <script src="../assets/node_modules/toast-master/js/jquery.toast.js"></script>
+    <script src="dist/js/pages/toastr.js"></script>
 
     
 

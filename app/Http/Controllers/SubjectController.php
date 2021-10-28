@@ -3,14 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Subjects;
+use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
     public function index() {
-        return view('question-subject');
+        $subject = DB::table('subjects')->get();
+        if(isset($subject)) {
+            return view('question-subject')->with([
+                'subject' => $subject
+            ]);
+        }
     }
 
     public function solutionsubject() {
-        return view('soluction-subject');
+        $subject = DB::table('subjects')->get();
+        if(isset($subject)) {
+            return view('solution-subject')->with([
+                'subject' => $subject
+            ]);
+        }
     }
 }

@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Subjects extends Model
+class UploadFiles extends Model
 {
     public $fillable = [
         'id',
-        'name',
-        'color'
+        'q_id',
+        'file_pass'
     ];
 }
