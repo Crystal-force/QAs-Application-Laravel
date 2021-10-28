@@ -92,14 +92,10 @@
                 setTimeout(function() { 
                     window.location.href="/answers"
                 }, 3000);
-
               }
             }
           });
         }
-        
-        
-        // document.location.href = "/answers"
       }
     </script>
 @endsection

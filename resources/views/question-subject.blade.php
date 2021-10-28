@@ -37,33 +37,8 @@
 
     <script>
       function MathQuestion(elem) {
-        $subject_id = $(elem).attr('data-id');
-        window.location.href='/math-question?id=1';
-      }
-    
-      function PhyQuestion(elem) {
-        $subject_id = $(elem).attr('data-id');
-        window.location.href="/phy-question?id=2";
-      }
-    
-      function CheQuestion(elem) {
-        window.location.href="/che-question";
-      }
-    
-      function BioQuestion(elem) {
-        window.location.href="/bio-question";
-      }
-    
-      function HisQuestion(elem) {
-        window.location.href="/his-question";
-      }
-    
-      function GeoQuestion(elem) {
-        window.location.href="/geo-question";
-      }
-    
-      function EngQuestion(elem)  {
-        window.location.href="/eng-question";
+        var subjectID = $(elem).attr('data-id');
+        window.location.href='/question-post?id='+subjectID;
       }
     </script>
 @endsection

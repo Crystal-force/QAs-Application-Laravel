@@ -22,11 +22,44 @@ class QuestionController extends Controller
         return view('allquestions');
     }
 
-    public function math_question(Request $request) {
+    public function question_post(Request $request) {
         $id = $request->id;
-        return view('math-question')->with([
-            'id' => $id
-        ]);
+        if($id == "1") {
+            return view('math-question')->with([
+                'id' => $id
+            ]);
+        }
+        else if($id == "2") {
+            return view('phy-question')->with([
+                'id' => $id
+            ]);
+        }
+        else if($id == "3") {
+            return view('che-question')->with([
+                'id' => $id
+            ]);
+        }
+        else if($id == "4") {
+            return view('bio-question')->with([
+                'id' => $id
+            ]);
+        }
+        else if($id == "5") {
+            return view('his-question')->with([
+                'id' => $id
+            ]);
+        }
+        else if($id == "6") {
+            return view('geo-question')->with([
+                'id' => $id
+            ]);
+        }
+        else if($id == "7") {
+            return view('eng-question')->with([
+                'id' => $id
+            ]);
+        }
+        
     }
 
     public function upload_file(Request $request) {
@@ -64,10 +97,10 @@ class QuestionController extends Controller
         $res = Questions::create([
             'u_id' =>$u_id, 's_id'=>$s_id, 'q_title'=>$q_title, 'question'=>$question
         ]);
-        $q_id = $res->id;
 
         $source_dir = 'upload/question_file/';
         $target_dir = 'storage/questions_file/';
+
         if (!is_dir($target_dir)) {
           if (!mkdir($target_dir, 0777, true)) {
             echo 'fail';
@@ -81,35 +114,14 @@ class QuestionController extends Controller
           unlink($source_dir . $file);
           $uploadFile = $target_dir . $file;
          
+          
+          $q_id = $res->id;
+        
           $res = UploadFiles::create([
                 'q_id'=>$q_id, 'file_pass'=>$uploadFile
           ]);
         }
         $success = "success";
         return response()->json(['data' => $success]);
-    }
-
-    public function phy_question() {
-        return view('phy-question');
-    }
-
-    public function che_question() {
-        return view('che-question');
-    }
-
-    public function bio_question() {
-        return view('bio-question');
-    }
-
-    public function his_question() {
-        return view('his-question');
-    }
-
-    public function geo_question() {
-        return view('geo-question');
-    }
-
-    public function eng_question() {
-        return view('eng-question');
     }
 }

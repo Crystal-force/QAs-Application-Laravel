@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/ask-subject', 'SubjectController@index')->name('ask-subject')->middleware('auth');
     Route::get('/solution-subject', 'SubjectController@solutionsubject')->name('solution-subject')->middleware('auth');
     Route::get('/question', 'QuestionController@index')->name('question')->middleware('auth');
-    Route::get('/math-question/{id?}', 'QuestionController@math_question')->name('math-question')->middleware('auth');
+    Route::get('/question-post/{id?}', 'QuestionController@question_post')->name('question-post')->middleware('auth');
     Route::get('/phy-question/{id?}', 'QuestionController@phy_question')->name('phy-question')->middleware('auth');
 
     Route::post('/upload-question-file', 'QuestionController@upload_file')->middleware('auth');
