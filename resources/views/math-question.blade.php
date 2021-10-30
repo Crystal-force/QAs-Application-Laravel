@@ -79,6 +79,7 @@
             },
             dataType: false,
             success: function(data) {
+              console.log(data);
               if(data.data == "success") {
                 $.toast({
                     heading: 'Sua pergunta foi postada com sucesso.',
@@ -90,7 +91,7 @@
                 });
 
                 setTimeout(function() { 
-                    window.location.href="/answers"
+                    window.location.href="/answers?id="+data.questionId
                 }, 3000);
               }
             }

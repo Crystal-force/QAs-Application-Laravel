@@ -97,7 +97,7 @@ class QuestionController extends Controller
         $res = Questions::create([
             'u_id' =>$u_id, 's_id'=>$s_id, 'q_title'=>$q_title, 'question'=>$question
         ]);
-
+        $question_id = $res->id;
         $source_dir = 'upload/question_file/';
         $target_dir = 'storage/questions_file/';
 
@@ -113,15 +113,15 @@ class QuestionController extends Controller
           copy($source_dir . $file, $target_dir . $file);
           unlink($source_dir . $file);
           $uploadFile = $target_dir . $file;
-         
           
           $q_id = $res->id;
         
-          $res = UploadFiles::create([
-                'q_id'=>$q_id, 'file_pass'=>$uploadFile
+          $res_1 = UploadFiles::create([
+                'q_id'=>$q_id, 'file_path'=>$uploadFile, 'file_name'=>$file
           ]);
+          
         }
         $success = "success";
-        return response()->json(['data' => $success]);
+        return response()->json(['data' => $success, 'questionId' => $question_id]);
     }
 }

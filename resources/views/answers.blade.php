@@ -26,14 +26,13 @@
                         <div class="card-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-body">
-                                    <h3>Laravel 5.4 Specific Table Migration</h3>
+                                    <h3>{{$q_data->q_title}}</h3>
                                     <hr class="m-t-0 m-b-5">
-                                    <div class="row mt-5">
+                                    <div class="row mt-3">
                                         <div class="col-md-12">
                                             <div class="form-group row">
                                                 <div class="col-md-12">
-                                                    <p class="form-control-static">Hi read all the included documentation here in https://laravel.com/docs/5.4/migrations.
-                                                      Is there a way on how to migrate a certain migration file (1 migration only), cause right now every time there is a change I use php artisan migrate:refresh and all fields are getting res </p>
+                                                    <p class="form-control-static">{{$q_data->question}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,7 +40,12 @@
                                     <div class="row">
                                       <div class="col-12">
                                         <label><i class="fa fa-paperclip m-r-10 m-b-10"></i>Attachments</label>
-                                        <p class="file-name"><span class="mr-2">test.doc, test.pdf, test.png</p>
+                                        @foreach($q_file as $files)
+                                        <a href="/{{$files->file_path}}" target="_blank">
+                                           <p>{{$files->file_name}}</p>
+                                        </a>
+                                        @endforeach
+                                        {{-- <p class="file-name"><span class="mr-2">test.doc, test.pdf, test.png</p> --}}
                                        
                                       </div>
                                     </div>

@@ -9,6 +9,7 @@ class UploadFiles extends Model
     public $fillable = [
         'id',
         'q_id',
-        'file_pass'
+        'file_path',
+        'file_name'
     ];
 }
