@@ -14,6 +14,10 @@ class Questions extends Model
         'question'
     ];
 
+    public function Answers_List() {
+        return $this->hasMany('App\Http\Models\Answers');
+    }
+
     public function Question_user() {
         return $this->belongTo('App\Http\User', 'u_id');
     }

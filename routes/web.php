@@ -34,9 +34,10 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/upload-question-file', 'QuestionController@upload_file')->middleware('auth');
     Route::post('/question-upload', 'QuestionController@question_upload')->middleware('auth');
     Route::get('/answers/{id?}', 'AnswerController@index')->name('answers')->middleware('auth');
+    Route::get('/allquestions', 'QuestionController@allquestions')->name('allquestions')->middleware('auth');
 });
 
 Route::get('/answers', 'AnswerController@index')->name('answers');
 Route::get('/solution', 'AnswerController@math_solution')->name('solution');
-Route::get('/allquestions', 'QuestionController@allquestions')->name('allquestions');
+
 

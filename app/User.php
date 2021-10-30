@@ -40,4 +40,7 @@ class User extends Authenticatable
     public function QuesionList() {
         return $this->hasMany('App\Http\Models\Questions');
     }
+    public function AnswerList() {
+        return $this->hasMany('App\Http\Models\Answers');
+    }
 }

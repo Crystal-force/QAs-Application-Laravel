@@ -79,7 +79,6 @@
             },
             dataType: false,
             success: function(data) {
-              console.log(data);
               if(data.data == "success") {
                 $.toast({
                     heading: 'Sua pergunta foi postada com sucesso.',

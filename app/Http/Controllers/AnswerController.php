@@ -13,7 +13,7 @@ class AnswerController extends Controller
         $q_id = $request->id;
         $question_data = Questions::where('id', $q_id)->first();
         $question_file =DB::table('upload_files')->where('q_id', $q_id)->get();
-        
+        dd($q_id);
         if(!isset($question_file)) {
             $question_file = "";
         }

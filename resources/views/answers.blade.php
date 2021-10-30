@@ -12,7 +12,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('answers')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New</a>
+                          <a href="{{route('ask-subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New Question</a>
                       </div>
                   </div>
               </div>
@@ -39,14 +39,14 @@
                                     </div>
                                     <div class="row">
                                       <div class="col-12">
-                                        <label><i class="fa fa-paperclip m-r-10 m-b-10"></i>Attachments</label>
+                                        <p><i class="fa fa-paperclip m-r-10 m-b-10"></i>Attachments</p>
                                         @foreach($q_file as $files)
-                                        <a href="/{{$files->file_path}}" target="_blank">
-                                           <p>{{$files->file_name}}</p>
-                                        </a>
+                                        <div>
+                                          <a href="/{{$files->file_path}}" class="attachment" target="_blank">
+                                            <p>{{$files->file_name}}</p>
+                                          </a>
+                                        </div>
                                         @endforeach
-                                        {{-- <p class="file-name"><span class="mr-2">test.doc, test.pdf, test.png</p> --}}
-                                       
                                       </div>
                                     </div>
                                     <hr class="m-t-0 m-b-0">

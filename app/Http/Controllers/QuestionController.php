@@ -18,9 +18,6 @@ class QuestionController extends Controller
         return view('question');
     }
 
-    public function allquestions() {
-        return view('allquestions');
-    }
 
     public function question_post(Request $request) {
         $id = $request->id;
@@ -123,5 +120,12 @@ class QuestionController extends Controller
         }
         $success = "success";
         return response()->json(['data' => $success, 'questionId' => $question_id]);
+    }
+
+    
+    public function allquestions() {
+        $questions = Questions::get();
+        dd($questions);
+        return view('allquestions');
     }
 }

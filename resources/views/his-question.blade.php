@@ -93,7 +93,7 @@
                 });
 
                 setTimeout(function() { 
-                    window.location.href="/answers"
+                    window.location.href="/answers?id="+data.questionId
                 }, 3000);
               }
             }
