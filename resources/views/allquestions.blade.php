@@ -27,28 +27,22 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style="width: 72%; text-align: center">Name</th>
+                                                <th style="width: 72%; text-align: center">Questions</th>
                                                 <th style="text-align: center">posted date</th>
                                                 <th style="text-align: center" ></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($questions as $questions)
                                             <tr>
-                                                <td class="align-middle">Vertical align in bootstrap table</td>
-                                                <td class="align-middle" style="text-align: center">2011/04/25</td>
+                                                <td class="align-middle">{{$questions->q_title}}</td>
+                                                <td class="align-middle" style="text-align: center">{{$questions->updated_at}}</td>
                                                 <td class="align-middle" style="text-align: center">
-                                                    <a href="javascript:;" data-toggle="tooltip" title="Mostre a resposta detalhada" onclick="ShowAnswer(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
-                                                    <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
+                                                    <a href="javascript:;" data-toggle="tooltip" title="Mostre a resposta detalhada" data-id={{$questions->id}} onclick="ShowAnswer(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
+                                                    <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta" data-id={{$questions->id}}> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="align-middle">Vertical align in bootstrap table</td>
-                                                <td class="align-middle" style="text-align: center">2011/07/25</td>
-                                                <td class="align-middle" style="text-align: center">
-                                                    <a href="javascript:;" data-toggle="tooltip" title="Mostre a resposta detalhada" onclick="ShowAnswer(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
-                                                    <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -60,16 +54,12 @@
                             <div class="card-body">
                                 <h4 class="card-title">Answers</h4>
                                 <hr class="mt-1 mb-1">
-                                <div class="answer-area mt-2">
-                                    <p>Based on what you have provided your CSS selector is not specific enough to override the CSS rules defined by Bootstrap.</p>
-                                    <p>@BarryFranklin Add a class to that table, <table class="table vertical-align">, and slightly increase the specificity of the selector using that class, table.vertical-align > tbody > tr > td {}. You could also do .table.vertical-alilgn > tbody > tr > td {} though that has a higher specificity than the first option. I always try to increase specificity in my CSS selectors as little as possible if I can. Notice that the first option is selecting a table element that has .vertical-align while the second option is selecting an element that has the .table AND .vertical-align</p>
+                                <div class="p-1" id="question_area">
+                                    
                                 </div>
-                                <hr class="mt-2 mb-2">
-                                <div class="answer-area mt-2">
-                                    <p>Based on what you have provided your CSS selector is not specific enough to override the CSS rules defined by Bootstrap.</p>
-                                    <p>@BarryFranklin Add a class to that table, <table class="table vertical-align">, and slightly increase the specificity of the selector using that class, table.vertical-align > tbody > tr > td {}. You could also do .table.vertical-alilgn > tbody > tr > td {} though that has a higher specificity than the first option. I always try to increase specificity in my CSS selectors as little as possible if I can. Notice that the first option is selecting a table element that has .vertical-align while the second option is selecting an element that has the .table AND .vertical-align</p>
+                                <div id="answers_area">
+                                    {{-- this create in JS --}}
                                 </div>
-                                <hr class="mt-2 mb-2">
                             </div>
                         </div>
                     </div>
@@ -88,7 +78,49 @@
     <script>
          function ShowAnswer(elem) {
             var q_id = $(elem).attr('data-id');
-            $('.answer-area').show();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/show-answers',
+                method: 'POST',
+                data: {
+                    id: q_id
+                },
+                dataType: false,
+                success: function(data) {
+                    var question_html = '';
+                    question_html+='<div class="mt-3" style="background:#e3e2e24a; padding: 1rem">\n'+
+                                        '<h5 style="font-weight:500">'+data[1].q_title+'</h5>\n'+
+                                        '<p style="text-align:end">'+data[1].updated_at+'</p>\n'+
+                                        '<p>'+data[1].question+'</p>\n'+
+                                    '</div>\n'
+                                    '<hr class="mt-2 mb-2">';
+                     $("#question_area").html(question_html); 
+
+                    if(data[0] == 'null') {
+                        var null_html = '';
+                        null_html+='<p style="text-align:center; margin-top:25px;">No Answers...</p>';
+                        $("#answers_area").html(null_html);
+                    }
+                    else {
+                        var count = data[0].length;
+                        
+                        var full_html = '';
+                        for(var i=0; i<count; i++) {
+                            full_html+='<div class="answer-area mt-2">\n'+
+                                        '<p>'+data[0].answers+'</p>\n'+
+                                    '</div>\n'+
+                                    '<hr class="mt-2 mb-2">';
+                        }
+                        $("#answers_area").html(full_html);
+                    }
+                }
+            });
+
+            $('#answer-area').show();
         }
     </script>
 @endsection

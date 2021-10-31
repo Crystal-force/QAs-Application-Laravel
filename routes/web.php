@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/question-upload', 'QuestionController@question_upload')->middleware('auth');
     Route::get('/answers/{id?}', 'AnswerController@index')->name('answers')->middleware('auth');
     Route::get('/allquestions', 'QuestionController@allquestions')->name('allquestions')->middleware('auth');
+    Route::post('/show-answers','AnswerController@show_answers')->middleware('auth');
 });
 
 Route::get('/answers', 'AnswerController@index')->name('answers');

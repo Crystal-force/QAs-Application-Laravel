@@ -124,8 +124,10 @@ class QuestionController extends Controller
 
     
     public function allquestions() {
-        $questions = Questions::get();
-        dd($questions);
-        return view('allquestions');
+        $questions = Questions::all();
+       
+        return view('allquestions')->with([
+            'questions' => $questions
+        ]);
     }
 }

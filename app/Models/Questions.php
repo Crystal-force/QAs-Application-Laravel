@@ -17,8 +17,10 @@ class Questions extends Model
     public function Answers_List() {
         return $this->hasMany('App\Http\Models\Answers');
     }
-
     public function Question_user() {
         return $this->belongTo('App\Http\User', 'u_id');
+    }
+    public function Subjects_List() {
+        return $this->belongTo('App\Http\Subjects', 's_id');
     }
 }

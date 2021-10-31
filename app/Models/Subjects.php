@@ -11,4 +11,8 @@ class Subjects extends Model
         'name',
         'color'
     ];
+
+    public function Questions_List() {
+        return $this->hasMany('App\Http\Models\Questions');
+    }
 }
