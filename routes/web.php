@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/show-answers','AnswerController@ShowAnswer')->middleware('auth');
     Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
+    Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
 });
 
 // Route::get('/answers', 'AnswerController@index')->name('answers');

@@ -119,15 +119,16 @@
                   <div id="question">
 
                   </div>
-                  <h5><i class="fa fa-paperclip m-r-10 m-b-10"></i>Attachments</h5>
+                  <p style="font-weight: 400"><i class="fa fa-paperclip m-r-10 m-b-10"></i>Attachments</p>
                   <div id="attampt_file">
                       
                   </div>
                   <div id="reply_answer">
                      <div class="form-group">
                         <label for="message-text" class="control-label">Responder:</label>
-                        <textarea class="textarea_editor form-control" rows="13" placeholder="Digite o texto ..."></textarea>
-                      </div>
+                        <textarea class="textarea_editor form-control" rows="13" placeholder="Digite o texto ..." id="answer_content"></textarea>
+                        <p class="answer-alert">Por favor, insira as respostas corretas para esta pergunta.</p>  
+                    </div>
                   </div>
               </div>
               <div id="reply_button">
@@ -188,13 +189,13 @@
                 var attampt = "";
                 var reply_btn = "";
                 reply_html += '<div class="form-group">\n'+
-                                '<h6>'+data.data[0].q_title+'</h6>\n'+
+                                '<h6 style="font-weight: 400">'+data.data[0].q_title+'</h6>\n'+
                             '</div>\n'+
                             '<div class="form-group">\n'+
                                 '<p>'+data.data[0].question+'</p>\n'+
                             '</div>\n';
                 var count = data.attampt.length;
-                for (let item of data.attampt) {
+                for (var item of data.attampt) {
                 attampt += '<a href="/'+item.file_path+'" class="attachment" target="_blank">\n'+
                                 '<p>'+item.file_name+'</p>\n'+
                             '</a>';
@@ -210,6 +211,50 @@
                 $("#reply_button").html(reply_btn);
               }
           })
+      }
+
+      function ReplyAnswer(elem) {
+          var q_id = '';
+          var answer = '';
+          q_id = $(elem).attr('data-id');
+          answer = $("#answer_content").val();
+         
+         if(answer == '') {
+            $(".answer-alert").show();
+         }
+         else {
+            $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+
+          $.ajax({
+              url:'/send-answer',
+              method: 'POST',
+              data: {
+                  id: q_id,
+                  answer: answer
+              },
+              dataType: false,
+              success: function(data) {
+                  if(data.data = '1') {
+                    $.toast({
+                            heading: 'Sua resposta foi postada corretamente. Obrigada.',
+                            position: 'top-center',
+                            loaderBg:'#ff6849',
+                            icon: 'success',
+                            hideAfter: 3000, 
+                            stack: 6
+                     });
+
+                    setTimeout(function() { 
+                        location.reload();
+                    }, 3000);
+                  }
+              }
+          })
+         }
       }
     </script>
 @endsection

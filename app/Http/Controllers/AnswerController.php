@@ -60,4 +60,17 @@ class AnswerController extends Controller
         
         return response()->json(['data' => $question, 'attampt' => $attampt]);
     }
+
+    public function SendAnswer(Request $request) {
+        $q_id = $request->id;
+        $answer = $request->answer;
+        $user_id = \Auth::user()->id;
+        $s_id = Questions::where('id', $q_id)->first()->s_id;
+
+        $res = Answers::create([
+            'u_id'=>$user_id, 'q_id'=>$q_id, 's_id'=>$s_id, 'answers'=>$answer
+        ]);
+        
+        return response()->json(['data' => '1']);
+    }
 }

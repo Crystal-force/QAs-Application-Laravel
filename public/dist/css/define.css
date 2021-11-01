@@ -264,4 +264,7 @@
 .attachment {
     color: rgb(36, 36, 36);
 }
-
+.answer-alert {
+    color: #f86c6b;
+    display: none;
+}
