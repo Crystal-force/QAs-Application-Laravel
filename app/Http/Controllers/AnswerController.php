@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Questions;
 use App\Models\UploadFiles;
 use App\Models\Answers;
+use App\Models\Subjects;
 
 class AnswerController extends Controller
 {
-    public function index(Request $request) {
+    public function Index(Request $request) {
         $q_id = $request->id;
         $question_data = Questions::where('id', $q_id)->first();
         $question_file =DB::table('upload_files')->where('q_id', $q_id)->get();
@@ -25,7 +26,7 @@ class AnswerController extends Controller
         ]);
     }
 
-    public function show_answers(Request $request) {
+    public function ShowAnswer(Request $request) {
         $id = $request->id;
         $answer_data = Answers::where('q_id', $id)->get();
         $question_data = Questions::where('id', $id)->first();
@@ -36,12 +37,27 @@ class AnswerController extends Controller
             return response()->json($data);
         }
         else {
-            return response()->json(['data', $answer_data]);
+            return response()->json(['data' => $answer_data]);
         }
         
     }
 
-    public function math_solution() {
-        return view('math-solution');
+    public function ReplyAnswers(Request $request) {
+        $s_id = $request->id;
+        $subject = Subjects::where('id', $s_id)->first();
+        $questions = Questions::where('s_id', $s_id)->get();
+        
+        return view('solution-post')->with([
+            'subject' => $subject,
+            'questions' => $questions
+        ]);
+    }
+
+    public function ReplyAnswer(Request $request) {
+        $q_id = $request->id;
+        $question =Questions::where('id', $q_id)->get();
+        $attampt = UploadFiles::where('q_id', $q_id)->get();
+        
+        return response()->json(['data' => $question, 'attampt' => $attampt]);
     }
 }

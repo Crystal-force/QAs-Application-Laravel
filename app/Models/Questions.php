@@ -15,12 +15,13 @@ class Questions extends Model
     ];
 
     public function Answers_List() {
-        return $this->hasMany('App\Http\Models\Answers');
+        return $this->hasMany('App\Models\Answers', 'q_id', 'id');
     }
     public function Question_user() {
-        return $this->belongTo('App\Http\User', 'u_id');
+        return $this->belongsTo('App\User', 'u_id', 'id');
     }
     public function Subjects_List() {
-        return $this->belongTo('App\Http\Subjects', 's_id');
+        return $this->belongsTo('App\Models\Subjects', 's_id');
     }
+    
 }

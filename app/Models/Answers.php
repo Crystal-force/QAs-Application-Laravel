@@ -15,11 +15,11 @@ class Answers extends Model
     ];
 
     public function Answers_user() {
-        return $this->belongTo('App\Http\User', 'u_id');
+        return $this->belongsTo('App\User', 'u_id');
     }
 
     public function Question_List() {
-        return $this->belongTo('App\Http\Models\Questions', 'q_id');
+        return $this->belongsTo('App\Models\Questions');
     }
 
 }

@@ -14,12 +14,12 @@ use App\Models\UploadFiles;
 
 class QuestionController extends Controller
 {
-    public function index() {
+    public function Index() {
         return view('question');
     }
 
 
-    public function question_post(Request $request) {
+    public function PostQuestion(Request $request) {
         $id = $request->id;
         if($id == "1") {
             return view('math-question')->with([
@@ -59,7 +59,7 @@ class QuestionController extends Controller
         
     }
 
-    public function upload_file(Request $request) {
+    public function UploadFile(Request $request) {
         $target_dir = 'upload/question_file/';
         $image = $request->file('file');
         $imageName = $image->getClientOriginalName();
@@ -85,7 +85,7 @@ class QuestionController extends Controller
         }
     }
 
-    public function question_upload(Request $request) {
+    public function UploadQuestion(Request $request) {
         $u_id = Auth::user()->id;
         $s_id = $request->s_id;
         $q_title = $request->q_title;
@@ -123,7 +123,7 @@ class QuestionController extends Controller
     }
 
     
-    public function allquestions() {
+    public function AllQuestions() {
         $questions = Questions::all();
        
         return view('allquestions')->with([

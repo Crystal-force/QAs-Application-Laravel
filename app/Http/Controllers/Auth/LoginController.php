@@ -12,7 +12,7 @@ use Redirect;
 
 class LoginController extends Controller
 {
-    public function index(){
+    public function Index(){
         if(Auth::check()) {
             return back()->withInput();
         }
@@ -22,7 +22,7 @@ class LoginController extends Controller
         }
     }
 
-    public function login(request $request) {
+    public function LogIn(request $request) {
         $userlogged = $request->only('email', 'password');
 
         if(Auth::attempt($userlogged)) {
@@ -33,7 +33,7 @@ class LoginController extends Controller
         }
     }
 
-    public function logout() {
+    public function LogOut() {
         Auth::logout();
         return Redirect::to('/');
     }

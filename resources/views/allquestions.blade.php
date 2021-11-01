@@ -72,8 +72,6 @@
         $(function() {
             $('#myTable').DataTable();
         });
-
-       
     </script>
     <script>
          function ShowAnswer(elem) {
@@ -92,26 +90,27 @@
                 dataType: false,
                 success: function(data) {
                     var question_html = '';
+                    
                     question_html+='<div class="mt-3" style="background:#e3e2e24a; padding: 1rem">\n'+
-                                        '<h5 style="font-weight:500">'+data[1].q_title+'</h5>\n'+
-                                        '<p style="text-align:end">'+data[1].updated_at+'</p>\n'+
-                                        '<p>'+data[1].question+'</p>\n'+
+                                        '<h5 style="font-weight:500">'+data.data.q_title+'</h5>\n'+
+                                        '<p style="text-align:end">'+data.data.updated_at+'</p>\n'+
+                                        '<p>'+data.data.question+'</p>\n'+
                                     '</div>\n'
                                     '<hr class="mt-2 mb-2">';
                      $("#question_area").html(question_html); 
 
-                    if(data[0] == 'null') {
+                    if(data.data == 'null') {
                         var null_html = '';
                         null_html+='<p style="text-align:center; margin-top:25px;">No Answers...</p>';
                         $("#answers_area").html(null_html);
                     }
                     else {
-                        var count = data[0].length;
+                        var count = data.data.length;
                         
                         var full_html = '';
                         for(var i=0; i<count; i++) {
                             full_html+='<div class="answer-area mt-2">\n'+
-                                        '<p>'+data[0].answers+'</p>\n'+
+                                        '<p>'+data.data.answers+'</p>\n'+
                                     '</div>\n'+
                                     '<hr class="mt-2 mb-2">';
                         }
@@ -119,8 +118,6 @@
                     }
                 }
             });
-
-            $('#answer-area').show();
         }
     </script>
 @endsection

@@ -10,11 +10,11 @@ use App\User;
 
 class RegisterController extends Controller
 {
-    public function index() {
+    public function Index() {
         return view('auth.register');
     }
 
-    public function register(request $request) {
+    public function Register(request $request) {
 
         $registered = User::where('email', $request['email'])->first();
         
@@ -33,7 +33,7 @@ class RegisterController extends Controller
         return response()->json(['data' => '1']);
     }
 
-    public function account_setting() {
+    public function AccountSetting() {
         return view('account-setting');
     }
 }
