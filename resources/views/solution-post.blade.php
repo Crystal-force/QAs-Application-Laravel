@@ -71,30 +71,31 @@
                               <table class="table stylish-table">
                                   <thead>
                                       <tr>
-                                          <th>Answers</th>
+                                          <th style="width:60%">Answers</th>
                                           <th>User</th>
                                           <th>Date</th>
                                           <th>Status</th>
                                       </tr>
                                   </thead>
                                   <tbody>
+                                      @foreach($answers as $Answers)
                                       <tr class="each-question">
                                           <td>
-                                              <h6>Vertical align in bootstrap table</h6>
-                                              <small class="text-muted sm-question-content">I want to vertically align the text to the center position, but somehow the css doesn't seem to work. I have used the bootstrap responsive tables. I want to know why my code doesn't work and whats is the correct method to make it work.</small>
+                                              <p class="text-muted sm-question-content">{{$Answers->answers}}</p>
                                           </td>
                                           <td class="align-middle">
-                                              <h6>Johnathan</h6>
+                                              <h6>{{$Answers->Answers_user->name}}</h6>
                                           </td>
                                           <td class="align-middle">
-                                            <p>10/18/2021</p>
+                                            <p>{{$Answers->updated_at}}</p>
                                             <span class="label label-danger">respondeu</span>
                                           </td>
                                           <td class="align-middle">
-                                              <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply"><i class="fas fa-eye text-success show-icon"></i> </a>
+                                              <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
                                               <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
                                           </td>
                                       </tr>
+                                      @endforeach
                                   </tbody>
                               </table>
                           </div>
@@ -107,7 +108,7 @@
         </div>
         @include('common.footer')
     </div>
-
+    {{-- Sent Answer Modal --}}
     <div class="modal fade" id="questionReplyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
       <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -138,21 +139,23 @@
       </div>
     </div>
 
+    {{-- Show the answers --}}
     <div class="modal fade" id="replyAnswerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
       <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h4 class="modal-title" id="exampleModalLabel1">Responder</h4>
+                  <h4 class="modal-title" id="exampleModalLabel1" style="font-weight:500">Responder</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body">
-                  <form>
-                      <div class="form-group">
-                          <h6>Vertical align in bootstrap table</h6>
-                      </div>
-                      <div class="form-group">
-                          <p>I want to vertically align the text to the center position, but somehow the css doesn't seem to work. I have used the bootstrap responsive tables. I want to know why my code doesn't work and whats is the correct method to make it work.</p>
-                      </div>
+                  <h5 style="font-weight: 400;">Question</h5>
+                  <form id="detail_question">
+                        
+                  </form>
+                  <hr class="mt-1 mb-1">
+                  <h5>Answer</h5>
+                  <form id="detail_answer">
+                     
                   </form>
               </div>
               <div class="modal-footer">
@@ -161,6 +164,7 @@
           </div>
       </div>
     </div>
+
     <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script> 
     <script>
       $(document).ready(function() {
@@ -255,6 +259,42 @@
               }
           })
          }
+      }
+
+      function DetailAnswers(elem) {
+          var s_id = '';
+          s_id = $(elem).attr('data-id');
+          
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+
+          $.ajax({
+            url: '/detail-answer',
+            method: 'POST',
+            data: {
+                id: s_id
+            },
+            dataType: false,
+            success: function(data) {
+                var question_html = '';
+                question_html += '<div class="form-group">\n'+
+                                    '<h6>'+data.question.q_title+'</h6>\n'+
+                                '</div>\n'+
+                                '<div class="form-group">\n'+
+                                    '<p>'+data.question.question+'</p>\n'+
+                                '</div>'
+                 $("#detail_question").html(question_html);     
+
+                 var answer_html = '';
+                 answer_html += '<div class="form-group">\n'+
+                                    '<p>'+data.data.answers+'</p>\n'+
+                                '</div>';     
+                $("#detail_answer").html(answer_html);
+            }
+          });
       }
     </script>
 @endsection

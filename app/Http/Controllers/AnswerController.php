@@ -43,13 +43,16 @@ class AnswerController extends Controller
     }
 
     public function ReplyAnswers(Request $request) {
+        $u_id = \Auth::user()->id;
         $s_id = $request->id;
         $subject = Subjects::where('id', $s_id)->first();
         $questions = Questions::where('s_id', $s_id)->get();
+        $answers = Answers::where('s_id', $s_id)->where('u_id', $u_id)->get();
         
         return view('solution-post')->with([
             'subject' => $subject,
-            'questions' => $questions
+            'questions' => $questions,
+            'answers' => $answers
         ]);
     }
 
@@ -72,5 +75,17 @@ class AnswerController extends Controller
         ]);
         
         return response()->json(['data' => '1']);
+    }
+
+    public function DetailAnswer(Request $request) {
+        $s_id = $request->id;
+        
+        $answer = Answers::where('id', $s_id)->first();
+        $question_id = $answer->q_id;
+        $question = Questions::where('id', $question_id)->first();
+        return response()->json([
+            'data'=>$answer,
+            'question'=>$question
+        ]);
     }
 }

@@ -15,7 +15,7 @@ class Answers extends Model
     ];
 
     public function Answers_user() {
-        return $this->belongsTo('App\User', 'u_id');
+        return $this->belongsTo('App\User', 'u_id', 'id');
     }
 
     public function Question_List() {
