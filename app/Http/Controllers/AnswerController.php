@@ -15,15 +15,21 @@ class AnswerController extends Controller
         $q_id = $request->id;
         $question_data = Questions::where('id', $q_id)->first();
         $question_file =DB::table('upload_files')->where('q_id', $q_id)->get();
+        $answers = Answers::where('q_id', $q_id)->get();
+        
+       
         if(!isset($question_file)) {
             $question_file = "";
         }
-     
+    
         return view('answers')->with([
             'q_data' => $question_data,
             'q_file' => $question_file,
+            'a_data' => $answers
             
         ]);
+    
+        
     }
 
     public function ShowAnswer(Request $request) {
@@ -66,12 +72,14 @@ class AnswerController extends Controller
 
     public function SendAnswer(Request $request) {
         $q_id = $request->id;
+        $res = Questions::where('id', $q_id)->update(['statu' => "1"]);
         $answer = $request->answer;
         $user_id = \Auth::user()->id;
         $s_id = Questions::where('id', $q_id)->first()->s_id;
-
+        $unselect = "0";
+        $unread = "0";
         $res = Answers::create([
-            'u_id'=>$user_id, 'q_id'=>$q_id, 's_id'=>$s_id, 'answers'=>$answer
+            'u_id'=>$user_id, 'q_id'=>$q_id, 's_id'=>$s_id, 'answers'=>$answer, 'select' => $unselect, 'read' => $unread
         ]);
         
         return response()->json(['data' => '1']);
@@ -87,5 +95,16 @@ class AnswerController extends Controller
             'data'=>$answer,
             'question'=>$question
         ]);
+    }
+
+    public function RemoveAnswer(Request $request) {
+        $s_id =$request->id;
+        
+        $res = Answers::find($s_id)->delete();
+        
+        if($res == true) {
+            return response()->json(['data' => 'removed']);
+        }
+
     }
 }

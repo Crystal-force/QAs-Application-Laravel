@@ -27,15 +27,22 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style="width: 72%; text-align: center">Questions</th>
-                                                <th style="text-align: center">posted date</th>
+                                                <th style="width: 72%; text-align: center">Question</th>
+                                                <th style="width: 72%; text-align: center">Subject</th>
+                                                <th style="text-align: center">Date</th>
                                                 <th style="text-align: center" ></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($questions as $questions)
                                             <tr>
-                                                <td class="align-middle">{{$questions->q_title}}</td>
+                                                <td class="align-middle">
+                                                    {{$questions->q_title}}
+                                                    <p class="sm-question-content">{{$questions->question}}</p>
+                                                </td>
+                                                <td>
+                                                    {{$questions->Subjects_List->name}}
+                                                </td>
                                                 <td class="align-middle" style="text-align: center">{{$questions->updated_at}}</td>
                                                 <td class="align-middle" style="text-align: center">
                                                     <a href="javascript:;" data-toggle="tooltip" title="Mostre a resposta detalhada" data-id={{$questions->id}} onclick="ShowAnswer(this)"><i class="fas fa-eye text-success show-icon"></i> </a>

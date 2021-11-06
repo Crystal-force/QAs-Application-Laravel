@@ -43,10 +43,16 @@
                                           <td class="align-middle">
                                               <h6>{{$question->Question_user->name}}</h6>
                                           </td>
-                                          <td class="align-middle"><p>{{$question->updated_at}}</p></td>
+                                          <td class="align-middle"><p data-id={{$question->statu}}>{{$question->updated_at}}</p></td>
+                                          @if($question->statu == "0")
+                                            <td class="align-middle">
+                                                <button type="button" class="btn btn-info" data-whatever="reply" data-id={{$question->id}} onclick="ReplyQuestion(this)"><i class="fas fa-reply"></i></button>
+                                            </td>
+                                          @else
                                           <td class="align-middle">
-                                            <button type="button" class="btn btn-info" data-whatever="reply" data-id={{$question->id}} onclick="ReplyQuestion(this)"><i class="fas fa-reply"></i></button>
+                                             <span class="label label-warning">Respondidas</span>
                                           </td>
+                                          @endif
                                       </tr>
                                       @endforeach
                                   </tbody>
@@ -86,13 +92,18 @@
                                           <td class="align-middle">
                                               <h6>{{$Answers->Answers_user->name}}</h6>
                                           </td>
+                                          @if($Answers->select == "0")
+                                          
+                                          @endif
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
-                                            <span class="label label-danger">respondeu</span>
+                                            {{-- <span class="label label-danger">selecionado</span> --}}
+                                            <span class="label label-success">read</span>
                                           </td>
+
                                           <td class="align-middle">
                                               <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
-                                              <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
+                                              <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta" data-id="{{$Answers->id}}" onclick="RemoveAnswers(this)"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
                                           </td>
                                       </tr>
                                       @endforeach
@@ -148,12 +159,12 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body">
-                  <h5 style="font-weight: 400;">Question</h5>
+                  <h5 style="font-weight: 400;"><i class="fas fa-question mr-1"></i>Question</h5>
                   <form id="detail_question">
                         
                   </form>
                   <hr class="mt-1 mb-1">
-                  <h5>Answer</h5>
+                  <h5 style="font-weight: 400;"><i class="far fa-edit mr-1"></i>Answer</h5>
                   <form id="detail_answer">
                      
                   </form>
@@ -294,6 +305,41 @@
                                 '</div>';     
                 $("#detail_answer").html(answer_html);
             }
+          });
+      }
+
+      function RemoveAnswers(elem) {
+          var id = $(elem).attr('data-id');
+          
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+
+          $.ajax({
+                url:'/remove-answers',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                dataType: false,
+                success: function(data) {
+                    if(data.data == "removed") {
+                        $.toast({
+                            heading: 'Excluir resposta.',
+                            text: 'Resposta selecionada excluída corretamente.',
+                            position: 'top-right',
+                            loaderBg:'#ff6849',
+                            icon: 'success',
+                            hideAfter: 3000, 
+                            stack: 6
+                        });
+                        setTimeout(function() { 
+                            location.reload();
+                        }, 3000);
+                    }
+                }
           });
       }
     </script>

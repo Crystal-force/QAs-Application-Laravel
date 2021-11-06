@@ -19,6 +19,8 @@ class CreateAnswersTable extends Migration
             $table->integer('q_id');
             $table->integer('s_id');
             $table->string('answers');
+            $table->string('select');
+            $table->string('read');
             $table->timestamps();
         });
     }

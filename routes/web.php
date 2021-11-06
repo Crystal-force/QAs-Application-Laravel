@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
     Route::post('/detail-answer', 'AnswerController@DetailAnswer')->middleware('auth');
+    Route::post('/remove-answers', 'AnswerController@RemoveAnswer')->middleware('auth');
 });
 
 // Route::get('/answers', 'AnswerController@index')->name('answers');

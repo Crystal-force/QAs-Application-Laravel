@@ -268,3 +268,7 @@
     color: #f86c6b;
     display: none;
 }
+.answer-confirm {
+    width: 25px;
+    height: 25px;
+}

@@ -11,7 +11,8 @@ class Questions extends Model
         'u_id',
         's_id',
         'q_title',
-        'question'
+        'question',
+        'statu'
     ];
 
     public function Answers_List() {
@@ -21,7 +22,7 @@ class Questions extends Model
         return $this->belongsTo('App\User', 'u_id', 'id');
     }
     public function Subjects_List() {
-        return $this->belongsTo('App\Models\Subjects', 's_id');
+        return $this->belongsTo('App\Models\Subjects', 's_id', 'id');
     }
     
 }

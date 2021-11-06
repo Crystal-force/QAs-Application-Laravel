@@ -90,9 +90,9 @@ class QuestionController extends Controller
         $s_id = $request->s_id;
         $q_title = $request->q_title;
         $question = $request->question;
-        
+        $initial_val = "0";
         $res = Questions::create([
-            'u_id' =>$u_id, 's_id'=>$s_id, 'q_title'=>$q_title, 'question'=>$question
+            'u_id' => $u_id, 's_id'=> $s_id, 'q_title' => $q_title, 'question' => $question, 'statu' => $initial_val
         ]);
         $question_id = $res->id;
         $source_dir = 'upload/question_file/';

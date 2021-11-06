@@ -11,7 +11,9 @@ class Answers extends Model
         'u_id',
         'q_id',
         's_id',
-        'answers'
+        'answers',
+        'select',
+        'read'
     ];
 
     public function Answers_user() {
