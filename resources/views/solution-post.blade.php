@@ -92,14 +92,20 @@
                                           <td class="align-middle">
                                               <h6>{{$Answers->Answers_user->name}}</h6>
                                           </td>
-                                          @if($Answers->select == "0")
-                                          
-                                          @endif
+                                          @if($Answers->read == "1")
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
                                             {{-- <span class="label label-danger">selecionado</span> --}}
-                                            <span class="label label-success">read</span>
+                                            <span class="label label-success">leitura</span>
                                           </td>
+                                          @elseif($Answers->read == "0")
+                                          <td class="align-middle">
+                                            <p>{{$Answers->updated_at}}</p>
+                                            {{-- <span class="label label-danger">selecionado</span> --}}
+                                            <span class="label label-danger">Não lida</span>
+                                          </td>
+                                          @endif
+                                          
 
                                           <td class="align-middle">
                                               <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>

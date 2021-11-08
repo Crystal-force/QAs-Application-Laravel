@@ -23,7 +23,7 @@
                 <div class="col-lg-6">
                   <div class="card">
                       <div class="card-header bg-info">
-                          <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers(3)</h4>
+                          <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers</h4>
                       </div>
                       <div class="card-body">
                         @if(isset($answers))
@@ -43,9 +43,9 @@
                             </div>
                             <div>
                               @if($answer->read == "1")
-                              <input type="checkbox" class="check answer-confirm" id="minimal-checkbox-1" checked unenable>
+                              <input type="checkbox" class="check answer-confirm" checked disabled>
                               @elseif($answer->read == "0")
-                              <input type="checkbox" class="check answer-confirm" id="answer-status">
+                              <input type="checkbox" class="check answer-confirm" id="answer_status" data-id="{{$answer->id}}">
                               @endif
                             </div>
                           </div>
@@ -64,8 +64,54 @@
         </div>
         @include('common.footer')
     </div>
-
+    <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script> 
     <script>
+     $(document).ready(function() {
       
+      $('#answer_status').change(function() {
+          var answer_id = "";
+          answer_id = $("#answer_status").attr('data-id');
+          if($(this).is(":checked")) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+              url: '/answer-readed',
+              method: 'POST',
+              data: {
+                state: '1',
+                id: answer_id
+              },
+              dataType: false,
+              success: function(data) {
+                console.log(data);
+              }
+            });
+          }
+          else {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+              url: '/answer-readed',
+              method: 'POST',
+              data: {
+                state: '0',
+                id: answer_id
+              },
+              dataType: false,
+              success: function(data) {
+                console.log(data);
+              }
+            });
+          }
+      });
+  });
     </script>
 @endsection

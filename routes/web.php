@@ -33,12 +33,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
     Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
 
+
     Route::get('/question-post/{id?}', 'QuestionController@PostQuestion')->name('question-post')->middleware('auth');
     Route::post('/upload-question-file', 'QuestionController@UploadFile')->middleware('auth');
     Route::post('/question-upload', 'QuestionController@UploadQuestion')->middleware('auth');
     Route::get('/answers/{id?}', 'AnswerController@Index')->name('answers')->middleware('auth');
     Route::get('/allquestions', 'QuestionController@AllQuestions')->name('allquestions')->middleware('auth');
     Route::get('/show-answers/{id?}','AnswerController@ShowAnswer')->middleware('auth');
+    Route::post('/answer-readed', 'AnswerController@AnswerState')->middleware('auth');
     Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');

@@ -42,6 +42,14 @@ class AnswerController extends Controller
         
     }
 
+    public function AnswerState(Request $request) {
+        $statu = $request->state;
+        $id = $request->id;
+      
+        $res = Answers::where('id', $id)->update(array('read' => $statu));
+        return response()->json(['data' => '1']);
+    }
+
     public function ReplyAnswers(Request $request) {
         $u_id = \Auth::user()->id;
         $s_id = $request->id;

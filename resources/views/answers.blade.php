@@ -56,7 +56,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header bg-info">
-                            <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers(3)</h4>
+                            <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers</h4>
                         </div>
                         <div class="card-body">
                           @if($a_data === null)
