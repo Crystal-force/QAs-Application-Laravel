@@ -17,37 +17,40 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', 'Auth\LoginController@index')->name('login');
-Route::post('/login', 'Auth\LoginController@login');
-Route::get('/register', 'Auth\RegisterController@index')->name('reigster');
-Route::post('/register', 'Auth\RegisterController@register');
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/account-setting', 'Auth\RegisterController@account_setting')->name('account-setting');
+Route::get('/login', 'Auth\LoginController@Index')->name('login');
+Route::post('/login', 'Auth\LoginController@LogIn');
+Route::get('/register', 'Auth\RegisterController@Index')->name('reigster');
+Route::post('/register', 'Auth\RegisterController@Register');
+Route::get('/logout', 'Auth\LoginController@LogOut')->name('logout');
+
 
 Route::middleware(['auth'])->group(function(){
     // Auth::routes();
-    Route::get('/select-category', 'CategoryController@index')->name('select-category')->middleware('auth');
-    Route::get('/ask-subject', 'SubjectController@index')->name('ask-subject')->middleware('auth');
-    Route::get('/solution-subject', 'SubjectController@solutionsubject')->name('solution-subject')->middleware('auth');
-    Route::get('/question', 'QuestionController@index')->name('question')->middleware('auth');
-    Route::get('/math-question/{id?}', 'QuestionController@math_question')->name('math-question')->middleware('auth');
-    Route::get('/phy-question/{id?}', 'QuestionController@phy_question')->name('phy-question')->middleware('auth');
+    Route::get('/select-category', 'CategoryController@Index')->name('select-category')->middleware('auth');
+    Route::get('/ask-subject', 'SubjectController@Index')->name('ask-subject')->middleware('auth');
+    Route::get('/solution-subject', 'SubjectController@SolutionSubject')->name('solution-subject')->middleware('auth');
+    Route::get('/question', 'QuestionController@Index')->name('question')->middleware('auth');
+    Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
+    Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
 
-    Route::post('/upload-question-file', 'QuestionController@upload_file')->middleware('auth');
-    Route::post('/question-upload', 'QuestionController@question_upload')->middleware('auth');
-    Route::get('/answers', 'AnswerController@index')->name('answers')->middleware('auth');
+    Route::get('/question-post/{id?}', 'QuestionController@PostQuestion')->name('question-post')->middleware('auth');
+    Route::post('/upload-question-file', 'QuestionController@UploadFile')->middleware('auth');
+    Route::post('/question-upload', 'QuestionController@UploadQuestion')->middleware('auth');
+    Route::get('/answers/{id?}', 'AnswerController@Index')->name('answers')->middleware('auth');
+    Route::get('/allquestions', 'QuestionController@AllQuestions')->name('allquestions')->middleware('auth');
+    Route::get('/show-answers/{id?}','AnswerController@ShowAnswer')->middleware('auth');
+    Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
+    Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
+    Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
+    Route::post('/detail-answer', 'AnswerController@DetailAnswer')->middleware('auth');
+    Route::post('/remove-answers', 'AnswerController@RemoveAnswer')->middleware('auth');
+    Route::post('/remove-question', 'QuestionController@RemoveQuestion')->middleware('auth');
+
+    Route::get('/account-setting', 'Auth\RegisterController@AccountSetting')->name('account-setting')->middleware('auth');;
+    Route::post('/change-userinfo', 'Auth\RegisterController@ChangeInfo')->middleware('auth');
 });
 
+// Route::get('/answers', 'AnswerController@index')->name('answers');
 
 
-
-
-Route::get('/che-question', 'QuestionController@che_question')->name('che-question');
-Route::get('/bio-question', 'QuestionController@bio_question')->name('bio-question');
-Route::get('/his-question', 'QuestionController@his_question')->name('his-question');
-Route::get('/geo-question', 'QuestionController@geo_question')->name('geo-question');
-Route::get('/eng-question', 'QuestionController@eng_question')->name('eng-question');
-Route::get('/answers', 'AnswerController@index')->name('answers');
-Route::get('/solution', 'AnswerController@math_solution')->name('solution');
-Route::get('/allquestions', 'QuestionController@allquestions')->name('allquestions');
 

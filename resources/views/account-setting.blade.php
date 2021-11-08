@@ -12,7 +12,7 @@
                   </div>
                   <div class="col-md-7 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('ask-subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New</a>
+                         
                       </div>
                   </div>
               </div>
@@ -32,7 +32,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">User Name</label>
-                                                <input type="text" id="username" class="form-control" placeholder="John doe" value="John doe">
+                                                <input type="text" id="username" class="form-control" placeholder="John doe" value="{{$user->name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -40,21 +40,21 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Email</label>
-                                                <input type="text" id="email" class="form-control" placeholder="admin@admin.com" value="admin@admin.com">
+                                                <input type="text" id="email" class="form-control" placeholder="admin@admin.com" value="{{$user->email}}" readonly>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row p-t-20">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">Password</label>
-                                                <input type="text" id="email" class="form-control" placeholder="" value="Passowrd123!">
+                                                <label class="control-label">New Password</label>
+                                                <input type="password" id="new_pwd" class="form-control" placeholder="New password">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                    <button type="button" class="btn btn-success" onclick="ChangeUserInfo(this)" data-id="{{$user->id}}"> <i class="fa fa-check"></i> Update</button>
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </div>
                             </form>
@@ -62,8 +62,38 @@
                     </div>
                 </div>
               </div>
-
           </div>
         </div>
     </div>
+
+    <script>
+        function ChangeUserInfo(elem) {
+            var u_id = $(elem).attr('data-id');
+            var name = $('#username').val();
+            var email = $('#email').val();
+            var password = $('#new_pwd').val();
+            console.log(u_id, name, email, password)
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '/change-userinfo',
+                method: 'POST',
+                data: {
+                    id: u_id,
+                    name: name,
+                    email: email,
+                    password: password
+                },
+                dataType: false,
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }
+    </script>
 @endsection

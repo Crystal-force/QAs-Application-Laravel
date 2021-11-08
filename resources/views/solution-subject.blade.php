@@ -36,8 +36,8 @@
     </div>
     <script>
       function MathSolutions(elem) {
-        var id = $(elem).attr('data-id');
-        document.location.href = "/solution"
+        var subjectID = $(elem).attr('data-id');
+        document.location.href = "/solution?id="+subjectID
       }
     </script>
 @endsection
