@@ -10,6 +10,7 @@ use app\User;
 
 use App\Models\Questions;
 use App\Models\UploadFiles;
+use App\Models\Answers;
 
 
 class QuestionController extends Controller
@@ -18,6 +19,30 @@ class QuestionController extends Controller
         return view('question');
     }
 
+    public function QuestionAnswerList(Request $request) {
+        $s_id = $request->id;
+        $u_id = \Auth::user()->id;
+        
+        $questions = Questions::where('u_id', $u_id)->where('s_id', $s_id)->orderBy('id', 'DESC')->get();
+        
+        return view('question-answers')->with([
+            'q_data' => $questions,
+            'subject_id' => $s_id
+        ]);
+    }
+
+    function GetAnswersList(Request $request) {
+        $q_id = $request->id;
+        
+        $answerslist = Answers::where('q_id', $q_id)->get();
+        $subject_id = Questions::where('id', $q_id)->first();
+        
+        return view('show-detailed-answers')->with([
+            'answers' => $answerslist,
+            'subject_id' => $subject_id
+        ]);
+
+    }
 
     public function PostQuestion(Request $request) {
         $id = $request->id;
@@ -67,7 +92,7 @@ class QuestionController extends Controller
         $fileName = explode('.',$imageName);
         $firstName = $fileName[0].$rand;
         $secondName = $fileName[1];
-        if($secondName == 'png' || $secondName == "pdf" || $secondName == "doc" || $secondName == "docx") {
+        if($secondName == 'png' ||$secondName == 'jpg' || $secondName == "pdf" || $secondName == "doc" || $secondName == "docx") {
             $newName = $firstName.'.'.$secondName;
 
             if (!is_dir($target_dir)) {
@@ -104,6 +129,7 @@ class QuestionController extends Controller
             exit;
           }
         }
+
         foreach (scandir($source_dir) as $key => $file) {
           if ($file == '.' || $file == '..')
             continue;
@@ -121,13 +147,22 @@ class QuestionController extends Controller
         $success = "success";
         return response()->json(['data' => $success, 'questionId' => $question_id]);
     }
-
     
     public function AllQuestions() {
-        $questions = Questions::all();
+        $questions = Questions::orderBy('id', 'DESC')->get();
        
         return view('allquestions')->with([
             'questions' => $questions
         ]);
+    }
+
+    public function RemoveQuestion(Request $request) {
+        $id = $request->id;
+        
+        $res = Questions::find($id)->delete();
+        
+        if($res == true) {
+            return response()->json(['data' => 'removed']);
+        }
     }
 }

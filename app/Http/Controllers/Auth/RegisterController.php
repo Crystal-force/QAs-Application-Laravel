@@ -34,6 +34,20 @@ class RegisterController extends Controller
     }
 
     public function AccountSetting() {
-        return view('account-setting');
+        $user  = \Auth::user();
+       
+        return view('account-setting')->with([
+            'user' => $user
+        ]);
+    }
+
+    public function ChangeInfo(Request $request) {
+        $u_id = $request->id;
+
+        $res = User::where('id', $u_id)->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
     }
 }

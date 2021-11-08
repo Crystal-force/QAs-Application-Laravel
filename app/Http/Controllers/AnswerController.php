@@ -28,23 +28,17 @@ class AnswerController extends Controller
             'a_data' => $answers
             
         ]);
-    
-        
     }
 
     public function ShowAnswer(Request $request) {
         $id = $request->id;
         $answer_data = Answers::where('q_id', $id)->get();
         $question_data = Questions::where('id', $id)->first();
-        
-        if(isset($answer_data)) {
-            $result = 'null';
-            $data = [$result, $question_data];
-            return response()->json($data);
-        }
-        else {
-            return response()->json(['data' => $answer_data]);
-        }
+
+        return view('answerslist')->with([
+            'question' => $question_data,
+            'answers' => $answer_data
+        ]);
         
     }
 

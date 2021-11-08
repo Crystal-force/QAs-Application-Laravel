@@ -39,6 +39,7 @@
       function MathQuestion(elem) {
         var subjectID = $(elem).attr('data-id');
         window.location.href='/question-post?id='+subjectID;
+        // window.location.href='/question-answerlist?id='+subjectID;
       }
     </script>
 @endsection

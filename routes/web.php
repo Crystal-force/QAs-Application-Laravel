@@ -22,7 +22,7 @@ Route::post('/login', 'Auth\LoginController@LogIn');
 Route::get('/register', 'Auth\RegisterController@Index')->name('reigster');
 Route::post('/register', 'Auth\RegisterController@Register');
 Route::get('/logout', 'Auth\LoginController@LogOut')->name('logout');
-Route::get('/account-setting', 'Auth\RegisterController@AccountSetting')->name('account-setting');
+
 
 Route::middleware(['auth'])->group(function(){
     // Auth::routes();
@@ -30,17 +30,24 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/ask-subject', 'SubjectController@Index')->name('ask-subject')->middleware('auth');
     Route::get('/solution-subject', 'SubjectController@SolutionSubject')->name('solution-subject')->middleware('auth');
     Route::get('/question', 'QuestionController@Index')->name('question')->middleware('auth');
+    Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
+    Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
+
     Route::get('/question-post/{id?}', 'QuestionController@PostQuestion')->name('question-post')->middleware('auth');
     Route::post('/upload-question-file', 'QuestionController@UploadFile')->middleware('auth');
     Route::post('/question-upload', 'QuestionController@UploadQuestion')->middleware('auth');
     Route::get('/answers/{id?}', 'AnswerController@Index')->name('answers')->middleware('auth');
     Route::get('/allquestions', 'QuestionController@AllQuestions')->name('allquestions')->middleware('auth');
-    Route::post('/show-answers','AnswerController@ShowAnswer')->middleware('auth');
+    Route::get('/show-answers/{id?}','AnswerController@ShowAnswer')->middleware('auth');
     Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
     Route::post('/detail-answer', 'AnswerController@DetailAnswer')->middleware('auth');
     Route::post('/remove-answers', 'AnswerController@RemoveAnswer')->middleware('auth');
+    Route::post('/remove-question', 'QuestionController@RemoveQuestion')->middleware('auth');
+
+    Route::get('/account-setting', 'Auth\RegisterController@AccountSetting')->name('account-setting')->middleware('auth');;
+    Route::post('/change-userinfo', 'Auth\RegisterController@ChangeInfo')->middleware('auth');
 });
 
 // Route::get('/answers', 'AnswerController@index')->name('answers');

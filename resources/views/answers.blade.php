@@ -11,9 +11,7 @@
               
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
-                      <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('ask-subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New Question</a>
-                      </div>
+                      {{-- <h4>This is</h4> --}}
                   </div>
               </div>
               

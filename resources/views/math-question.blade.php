@@ -13,15 +13,16 @@
                 <div class="card-body">
                   <div class="row question-text">
                     <div class="card-body">
+                      <h3 class="card-title" style="text-align: center">Matemática pergunta</h3>
                       <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Matemática pergunta</h3>
-                        <button type="button" class="btn waves-effect waves-light btn-rounded btn-info" data-id="{{$id}}" onclick="Post_Question(this)">Pergantar</button>
+                        <a href="/question-answerlist?id={{$id}}" class="btn btn-primary btn-rounded"><i class="far fa-smile"></i> My questions</a>
+                        <button type="button" class="btn waves-effect waves-light btn-rounded btn-info" data-id="{{$id}}" onclick="Post_Question(this)"><i class="fas fa-upload mr-1"></i>Pergantar</button>
                       </div>
                       <div class="form-group mt-2">
                           <input class="form-control" placeholder="Título:" id="question_title">
                       </div>
                       <div class="form-group">
-                          <textarea class="textarea_editor form-control" rows="10" placeholder="Digite o texto ..." id="question_content"></textarea>
+                          <textarea class="textarea_editor form-control" rows="9" placeholder="Digite o texto ..." id="question_content"></textarea>
                       </div>
                       <h4><i class="ti-link"></i> Acessório</h4>
                       <form action="/upload-question-file" method="post" class="dropzone">

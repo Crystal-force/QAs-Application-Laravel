@@ -18,11 +18,18 @@ class Questions extends Model
     public function Answers_List() {
         return $this->hasMany('App\Models\Answers', 'q_id', 'id');
     }
+   
+    public function UploadFile_List() {
+        return $this->hasMany('App\Models\UploadFiles',);
+    }
+
     public function Question_user() {
         return $this->belongsTo('App\User', 'u_id', 'id');
     }
+
     public function Subjects_List() {
         return $this->belongsTo('App\Models\Subjects', 's_id', 'id');
     }
+    
     
 }
