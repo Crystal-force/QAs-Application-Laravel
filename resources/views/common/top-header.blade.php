@@ -46,38 +46,22 @@
                   <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                       <ul>
                           <li>
-                              <div class="drop-title">Newest Answers</div>
+                              <div class="drop-title">Respostas mais recentes</div>
                           </li>
                           <li>
                               <div class="message-center">
                                   <!-- Message -->
-                                  <a href="javascript:void(0)">
+                                  @foreach($answers as $key => $answer)
+                                  @if($key == "4")
+                                  @break;
+                                  @endif
+                                  <a href="/alert-show-answer?id={{$answer->id}}">
                                       <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
                                       <div class="mail-contnet">
-                                          <h5>Luanch Admin</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span> </div>
+                                          <h5>{{$answer->Answers_user->name}}</h5> <span class="mail-desc">{{$answer->answers}}</span> <span class="time">{{$answer->updated_at}}</span> </div>
                                   </a>
-                                  <!-- Message -->
-                                  <a href="javascript:void(0)">
-                                      <div class="btn btn-success btn-circle"><i class="ti-calendar"></i></div>
-                                      <div class="mail-contnet">
-                                          <h5>Event today</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span> </div>
-                                  </a>
-                                  <!-- Message -->
-                                  <a href="javascript:void(0)">
-                                      <div class="btn btn-info btn-circle"><i class="ti-settings"></i></div>
-                                      <div class="mail-contnet">
-                                          <h5>Configuração</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span> </div>
-                                  </a>
-                                  <!-- Message -->
-                                  <a href="javascript:void(0)">
-                                      <div class="btn btn-primary btn-circle"><i class="ti-user"></i></div>
-                                      <div class="mail-contnet">
-                                          <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                  </a>
+                                  @endforeach
                               </div>
-                          </li>
-                          <li>
-                              <a class="nav-link text-center link" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
                           </li>
                       </ul>
                   </div>

@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/question', 'QuestionController@Index')->name('question')->middleware('auth');
     Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
     Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
-
+    Route::get('/alert-show-answer/{id?}', 'AnswerController@EachAnswerShow')->middleware('auth');
 
     Route::get('/question-post/{id?}', 'QuestionController@PostQuestion')->name('question-post')->middleware('auth');
     Route::post('/upload-question-file', 'QuestionController@UploadFile')->middleware('auth');

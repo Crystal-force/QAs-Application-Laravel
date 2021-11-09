@@ -13,7 +13,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="/question-post?id={{$subject_id->s_id}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Postar nova pergunta</a>
+                          <a href="/select-category" class="btn btn-info d-none d-lg-block m-l-15"><i class="fas fa-undo mr-1"></i>Painel</a>
                       </div>
                   </div>
               </div>
@@ -26,10 +26,9 @@
                           <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Respostas</h4>
                       </div>
                       <div class="card-body">
-                        @if(isset($answers))
-                          {{-- <p style="text-align:center">The answers doesn't exist still.</p> --}}
-                        @endif
-                        @foreach($answers as $answer) 
+                        <?
+                          dd($answers);  
+                        ?>
                         <div class="answer-blog p-3">
                           <div class="d-flex justify-content-between mb-2">
                             <div class="d-flex">
@@ -37,24 +36,22 @@
                                   <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle" /></a>
                               </div>
                               <div class="p-l-10">
-                                  <h4 class="m-b-0">{{$answer->Answers_user->name}}</h4>
-                                  <small class="text-muted">From: {{$answer->Answers_user->email}}</small>
+                                  <h4 class="m-b-0">{{$answers[0]->Answers_user->name}}</h4>
+                                  <small class="text-muted">From: {{$answers[0]->Answers_user->email}}</small>
                               </div>
                             </div>
                             <div>
-                              @if($answer->read == "1")
-                              <input type="checkbox" class="check answer-confirm" checked disabled>
-                              @elseif($answer->read == "0")
-                              <input type="checkbox" class="check answer-confirm" id="answer_status" data-id="{{$answer->id}}">
-                              @endif
+                             
+                              <input type="checkbox" class="check answer-confirm" id="answer_status" data-id="{{$answers[0]->id}}">
+                             
                             </div>
                           </div>
                           <div class="">
-                            <p>{{$answer->answers}}</p>
+                            <p>{{$answers[0]->answers}}</p>
                           </div>
                         </div>
                         <hr class="mt-4 mb-4">
-                        @endforeach
+                      
                       </div>
                   </div>
                 </div>
