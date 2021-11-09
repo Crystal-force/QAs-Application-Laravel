@@ -52,7 +52,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/change-userinfo', 'Auth\RegisterController@ChangeInfo')->middleware('auth');
 });
 
-// Route::get('/answers', 'AnswerController@index')->name('answers');
 
 
 
