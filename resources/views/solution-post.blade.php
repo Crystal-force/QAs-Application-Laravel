@@ -77,9 +77,9 @@
                               <table class="table stylish-table">
                                   <thead>
                                       <tr>
-                                          <th style="width:60%">Answers</th>
-                                          <th>User</th>
-                                          <th>Date</th>
+                                          <th style="width:60%">Respostas</th>
+                                          <th>Do utilizador</th>
+                                          <th>Encontro</th>
                                           <th>Status</th>
                                       </tr>
                                   </thead>

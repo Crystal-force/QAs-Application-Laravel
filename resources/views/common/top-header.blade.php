@@ -66,7 +66,7 @@
                                   <a href="javascript:void(0)">
                                       <div class="btn btn-info btn-circle"><i class="ti-settings"></i></div>
                                       <div class="mail-contnet">
-                                          <h5>Settings</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span> </div>
+                                          <h5>Configuração</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span> </div>
                                   </a>
                                   <!-- Message -->
                                   <a href="javascript:void(0)">
@@ -86,15 +86,15 @@
                   <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                   <div class="dropdown-menu dropdown-menu-right animated flipInY">
                       <!-- text-->
-                      <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                      <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user mr-1"></i>Meu perfil</a>
                       <!-- text-->
                       <div class="dropdown-divider"></div>
                       <!-- text-->
-                      <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                      <a href="{{route('account-setting')}}" class="dropdown-item"><i class="ti-settings mr-1"></i>Configurações de conta</a>
                       <!-- text-->
                       <div class="dropdown-divider"></div>
                       <!-- text-->
-                      <a href="{{route('logout')}}" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                      <a href="{{route('logout')}}" class="dropdown-item"><i class="fa fa-power-off mr-1"></i>Sistema de logout</a>
                       <!-- text-->
                   </div>
           </ul>

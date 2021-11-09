@@ -13,7 +13,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="/question-post?id={{$subject_id->s_id}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New Question</a>
+                          <a href="/question-post?id={{$subject_id->s_id}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Postar nova pergunta</a>
                       </div>
                   </div>
               </div>
@@ -23,7 +23,7 @@
                 <div class="col-lg-6">
                   <div class="card">
                       <div class="card-header bg-info">
-                          <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Answers</h4>
+                          <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Respostas</h4>
                       </div>
                       <div class="card-body">
                         @if(isset($answers))

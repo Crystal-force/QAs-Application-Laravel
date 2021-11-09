@@ -10,7 +10,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('allquestions')}}" class="btn btn-success d-none d-lg-block m-l-15"><i class="fas fa-redo-alt"></i> All questions</a>
+                          <a href="{{route('allquestions')}}" class="btn btn-success d-none d-lg-block m-l-15"><i class="fas fa-redo-alt"></i> Todas as questões</a>
                       </div>
                   </div>
               </div>
@@ -21,7 +21,7 @@
               <div class="row col-12">
                 <div class="card" style="width: 100%">
                   <div class="card-body">
-                      <h4 class="card-title">All Answers</h4>
+                      <h4 class="card-title">Todas as respostas</h4>
                   </div>
                   <div class="comment-widgets m-b-20">
                       <!-- Comment Row -->
