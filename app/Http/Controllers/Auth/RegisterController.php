@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Rules\MatchOldPassword;
 
 class RegisterController extends Controller
 {
@@ -43,11 +44,18 @@ class RegisterController extends Controller
 
     public function ChangeInfo(Request $request) {
         $u_id = $request->id;
-
-        $res = User::where('id', $u_id)->update([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
+        $name = $request->name;
+        $email = $request->email;
+        $current_password = $request->current_password;
+        $new_password = $request->new_password;
+       
+        $current_pwd = \Auth::User()->password;
+        
+        if(Hash::check($current_password, $current_pwd)) {
+            $res = User::where('id', $u_id)->update(array('password' => Hash::make($new_password)));
+            return response()->json(['data' => '1']);
+        }
+        
+        return response()->json(['data' => '0']);
     }
 }

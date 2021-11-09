@@ -6,7 +6,7 @@
       
         @include('common.index-header')
 
-        <div class="dashboard-background" >
+        <div class="index-background" >
             <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-12">

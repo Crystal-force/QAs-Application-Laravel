@@ -42,6 +42,24 @@ class AnswerController extends Controller
         
     }
 
+    public function EachAnswerShow(Request $request) {
+        $a_id = $request->id;
+        
+        $answers = Answers::where('id', $a_id)->get();
+       
+        return view('alert-show-answers')->with([
+            'answers' => $answers
+        ]);
+    }
+
+    public function AnswerState(Request $request) {
+        $statu = $request->state;
+        $id = $request->id;
+      
+        $res = Answers::where('id', $id)->update(array('read' => $statu));
+        return response()->json(['data' => '1']);
+    }
+
     public function ReplyAnswers(Request $request) {
         $u_id = \Auth::user()->id;
         $s_id = $request->id;

@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/question', 'QuestionController@Index')->name('question')->middleware('auth');
     Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
     Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
+    Route::get('/alert-show-answer/{id?}', 'AnswerController@EachAnswerShow')->middleware('auth');
 
     Route::get('/question-post/{id?}', 'QuestionController@PostQuestion')->name('question-post')->middleware('auth');
     Route::post('/upload-question-file', 'QuestionController@UploadFile')->middleware('auth');
@@ -39,6 +40,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/answers/{id?}', 'AnswerController@Index')->name('answers')->middleware('auth');
     Route::get('/allquestions', 'QuestionController@AllQuestions')->name('allquestions')->middleware('auth');
     Route::get('/show-answers/{id?}','AnswerController@ShowAnswer')->middleware('auth');
+    Route::post('/answer-readed', 'AnswerController@AnswerState')->middleware('auth');
     Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
@@ -50,7 +52,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/change-userinfo', 'Auth\RegisterController@ChangeInfo')->middleware('auth');
 });
 
-// Route::get('/answers', 'AnswerController@index')->name('answers');
 
 
 

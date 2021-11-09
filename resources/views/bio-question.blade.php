@@ -15,7 +15,7 @@
                       <div class="card-body">
                         <h3 class="card-title" style="text-align: center">Biologia pergunta</h3>
                         <div class="d-flex justify-content-between">
-                          <a href="/question-answerlist?id={{$id}}" class="btn btn-primary btn-rounded"><i class="far fa-smile"></i> My questions</a>
+                          <a href="/question-answerlist?id={{$id}}" class="btn btn-primary btn-rounded"><i class="far fa-smile"></i> MMinhas perguntas</a>
                           <button type="button" class="btn waves-effect waves-light btn-rounded btn-info" data-id="{{$id}}" onclick="Post_Question(this)"><i class="fas fa-upload mr-1"></i>Pergantar</button>
                         </div>
                         <div class="form-group mt-2">
@@ -89,7 +89,7 @@
                 });
 
                 setTimeout(function() { 
-                    window.location.href="/answers?id="+data.questionId
+                    window.location.href="/show-detail-answer?id="+data.questionId
                 }, 3000);
               }
             }

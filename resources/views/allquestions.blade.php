@@ -9,11 +9,11 @@
           <div class="container-fluid">
               <div class="row page-titles">
                   <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">All Questions</h4>
+                    <h4 class="text-themecolor">Todas as perguntas</h4>
                   </div>
                   <div class="col-md-7 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('ask-subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Post New Question</a>
+                          <a href="{{route('ask-subject')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Postar nova pergunta</a>
                       </div>
                   </div>
               </div>
@@ -21,14 +21,14 @@
               <div class="row col-12">
                     <div class="card" style="width: 100%">
                         <div class="card-body">
-                            <h4 class="card-title">All Questions</h4>
+                            <h4 class="card-title">Todas as perguntas</h4>
                             <div class="table-responsive m-t-40">
                                 <table id="myTable" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="width: 72%; text-align: center">Question</th>
-                                            <th style="text-align: center">Subject</th>
-                                            <th style="text-align: center">Date</th>
+                                            <th style="width: 72%; text-align: center">Perguntas</th>
+                                            <th style="text-align: center">assuntos</th>
+                                            <th style="text-align: center">Encontro</th>
                                             <th style="text-align: center" ></th>
                                         </tr>
                                     </thead>
