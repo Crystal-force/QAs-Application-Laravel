@@ -26,9 +26,7 @@
                           <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Respostas</h4>
                       </div>
                       <div class="card-body">
-                        <?
-                          dd($answers);  
-                        ?>
+                        
                         <div class="answer-blog p-3">
                           <div class="d-flex justify-content-between mb-2">
                             <div class="d-flex">

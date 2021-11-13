@@ -6,14 +6,18 @@
       
         @include('common.index-header')
 
-        <div class="index-background" >
+        <video autoplay muted loop id="myVideo">
+            <source src="assets/images/background/SolverorSolver.mp4" type="video/mp4">
+        </video>
+
+        {{-- <div class="index-background" >
             <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-12">
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         @include('common.footer')
     </div>
     <script>

@@ -3,8 +3,8 @@
       <!-- ============================================================== -->
       <!-- Logo -->
       <!-- ============================================================== -->
-      <div class="navbar-header">
-          <a class="navbar-brand" href="/">
+      <div class="navbar-header" style="background: rgb(1 192 200);">
+          <div class="navbar-brand" href="/">
               <!-- Logo icon --><b>
                   <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                   <!-- Dark Logo icon -->
@@ -17,7 +17,7 @@
                <!-- dark Logo text -->
                <img src="../assets/images/qa-logo.png" alt="homepage" class="dark-logo qa-logo" />
                <!-- Light Logo text -->    
-               <img src="../assets/images/qa-logo.png" class="light-logo qa-logo" alt="homepage" /></span> </a>
+               <img src="../assets/images/qa-logo.png" class="light-logo qa-logo" alt="homepage" /></span> </div>
       </div>
       <div class="navbar-collapse">
           <ul class="navbar-nav mr-auto">
