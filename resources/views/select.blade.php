@@ -11,7 +11,7 @@
                     <div class="col-6">
                       <a href="{{route('ask-subject')}}" class="ask-category p-2">
                         <i class="fas fa-question question-icon"></i>
-                        <p class="ask-font">Perguntar a</p>
+                        <p class="ask-font">Perguntar</p>
                       <a>
                     </div>
                     <div class="col-6">
