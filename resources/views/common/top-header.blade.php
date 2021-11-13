@@ -4,7 +4,7 @@
       <!-- Logo -->
       <!-- ============================================================== -->
       <div class="navbar-header" style="background: rgb(1 192 200);">
-          <a class="navbar-brand" href="javascript:;">
+          <div class="navbar-brand" href="javascript:;">
               <!-- Logo icon --><b>
                   <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                   <!-- Dark Logo icon -->
@@ -17,7 +17,7 @@
                <!-- dark Logo text -->
                <img src="../assets/images/qa-logo.png" alt="homepage" class="dark-logo qa-logo" />
                <!-- Light Logo text -->    
-               <img src="../assets/images/qa-logo.png" class="light-logo qa-logo" alt="homepage" /></span> </a>
+               <img src="../assets/images/qa-logo.png" class="light-logo qa-logo" alt="homepage" /></span> </div>
       </div>
       <!-- ============================================================== -->
       <!-- End Logo -->
