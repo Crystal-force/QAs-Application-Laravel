@@ -22,7 +22,7 @@
                           <input class="form-control" placeholder="Título:" id="question_title">
                       </div>
                       <div class="form-group">
-                          <textarea class="textarea_editor form-control" rows="9" placeholder="Digite o texto ..." id="question_content"></textarea>
+                        <textarea id="mymce" name="area"></textarea>
                       </div>
                       <h4><i class="ti-link"></i> Acessório</h4>
                       <form action="/upload-question-file" method="post" class="dropzone">
@@ -49,7 +49,7 @@
         var question = "";
         var s_id = "";
         title = $("#question_title").val();
-        question = $("#question_content").val();
+        question = tinymce.activeEditor.getContent({ format: "text" });
         s_id = $(elem).attr('data-id');
 
         if(title == "" || question == "") {
