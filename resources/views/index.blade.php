@@ -5,19 +5,9 @@
     <div class="dashboard-area">
       
         @include('common.index-header')
-
-        <video autoplay muted loop id="myVideo">
+        <video playsinline autoplay muted loop poster="polina.jpg" id="bgvid">
             <source src="assets/images/background/SolverorSolver.mp4" type="video/mp4">
         </video>
-
-        {{-- <div class="index-background" >
-            <div class="container-fluid mt-5">
-                <div class="row">
-                    <div class="col-12">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         @include('common.footer')
     </div>
     <script>
