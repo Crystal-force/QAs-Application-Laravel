@@ -3,7 +3,7 @@
       <!-- ============================================================== -->
       <!-- Logo -->
       <!-- ============================================================== -->
-      <div class="navbar-header">
+      <div class="navbar-header" style="background: rgb(1 192 200);">
           <a class="navbar-brand" href="index.html">
               <!-- Logo icon --><b>
                   {{-- <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
