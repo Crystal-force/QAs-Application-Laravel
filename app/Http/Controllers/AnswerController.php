@@ -163,11 +163,14 @@ class AnswerController extends Controller
     }
 
     public function RemoveAnswer(Request $request) {
-        $s_id =$request->id;
+        $a_id =$request->id;
+        $q_id = Answers::where('id', $a_id)->first()->q_id;
+
+        $res_del= AnswerFile::where('a_id', $a_id)->delete();
+        $res_1 = Questions::where('id', $q_id)->update(['statu'=>'0']);
+        $res = Answers::find($a_id)->delete();
         
-        $res = Answers::find($s_id)->delete();
-        
-        if($res == true) {
+        if($res == true && $res_1 == true) {
             return response()->json(['data' => 'removed']);
         }
 
