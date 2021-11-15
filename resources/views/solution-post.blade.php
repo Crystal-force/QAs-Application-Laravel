@@ -175,6 +175,9 @@
                   <form id="detail_answer">
                      
                   </form>
+                  <div id="answer_files">
+
+                  </div>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -281,8 +284,8 @@
       }
 
       function DetailAnswers(elem) {
-          var s_id = '';
-          s_id = $(elem).attr('data-id');
+          var a_id = '';
+          a_id = $(elem).attr('data-id');
           
           $.ajaxSetup({
               headers: {
@@ -294,10 +297,11 @@
             url: '/detail-answer',
             method: 'POST',
             data: {
-                id: s_id
+                id: a_id
             },
             dataType: false,
             success: function(data) {
+                
                 var question_html = '';
                 question_html += '<div class="form-group">\n'+
                                     '<h6>'+data.question.q_title+'</h6>\n'+
@@ -310,8 +314,19 @@
                  var answer_html = '';
                  answer_html += '<div class="form-group">\n'+
                                     '<p>'+data.data.answers+'</p>\n'+
-                                '</div>';     
-                $("#detail_answer").html(answer_html);
+                                '</div>';
+                 $("#detail_answer").html(answer_html);
+
+                var count = data.answer_file.length;
+                for(var i=0; i<count; i++) {
+                    var answer_files = '';
+                    answer_files += '<div class="answerfile-area">\n'+
+                    '<p>Anexar arquivo</p>\n'+
+                    '<a href="/'+data.answer_file[i].file_path+'" target="_blank" class="answer_file">'+data.answer_file[i].file_name+'</a>\n'+
+                    '</div>';
+                }
+                $("#answer_files").html(answer_files);
+               
             }
           });
       }

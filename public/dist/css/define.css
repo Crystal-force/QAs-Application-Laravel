@@ -290,3 +290,9 @@ video {
 .qa-logo {
     width: 200px
 }
+.answerfile-area p{
+    font-weight: 600; 
+}
+.answer_file {
+    color: black;
+}

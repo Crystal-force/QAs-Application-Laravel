@@ -149,14 +149,16 @@ class AnswerController extends Controller
     }
 
     public function DetailAnswer(Request $request) {
-        $s_id = $request->id;
-        
-        $answer = Answers::where('id', $s_id)->first();
+        $a_id = $request->id;
+   
+        $answer = Answers::where('id', $a_id)->first();
+        $answer_file = AnswerFile::where('a_id', $a_id)->get();
         $question_id = $answer->q_id;
         $question = Questions::where('id', $question_id)->first();
         return response()->json([
             'data'=>$answer,
-            'question'=>$question
+            'question'=>$question,
+            'answer_file'=> $answer_file
         ]);
     }
 
