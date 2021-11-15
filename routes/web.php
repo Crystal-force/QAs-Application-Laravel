@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/show-answers/{id?}','AnswerController@ShowAnswer')->middleware('auth');
     Route::post('/answer-readed', 'AnswerController@AnswerState')->middleware('auth');
     Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
+    Route::post('/upload-answers-file', 'AnswerController@UploadFile')->middleware('auth');
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
     Route::post('/detail-answer', 'AnswerController@DetailAnswer')->middleware('auth');

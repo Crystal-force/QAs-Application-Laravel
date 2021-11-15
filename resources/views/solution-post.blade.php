@@ -92,21 +92,14 @@
                                           <td class="align-middle">
                                               <h6>{{$Answers->Answers_user->name}}</h6>
                                           </td>
-                                          @if($Answers->read == "1")
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
-                                            {{-- <span class="label label-danger">selecionado</span> --}}
-                                            <span class="label label-success">leitura</span>
+                                            @if($Answers->read == "1")
+                                                <span class="label label-success">leitura</span>
+                                            @elseif($Answers->read == "0")
+                                                <span class="label label-danger">Não lida</span>
+                                            @endif
                                           </td>
-                                          @elseif($Answers->read == "0")
-                                          <td class="align-middle">
-                                            <p>{{$Answers->updated_at}}</p>
-                                            {{-- <span class="label label-danger">selecionado</span> --}}
-                                            <span class="label label-danger">Não lida</span>
-                                          </td>
-                                          @endif
-                                          
-
                                           <td class="align-middle">
                                               <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
                                               <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta" data-id="{{$Answers->id}}" onclick="RemoveAnswers(this)"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
@@ -146,7 +139,15 @@
                         <label for="message-text" class="control-label">Responder:</label>
                         <textarea class="textarea_editor form-control" rows="13" placeholder="Digite o texto ..." id="answer_content"></textarea>
                         <p class="answer-alert">Por favor, insira as respostas corretas para esta pergunta.</p>  
-                    </div>
+                     </div>
+                     <div class="form-group">
+                        <form action="/upload-answers-file" method="post" class="dropzone">
+                            <div class="fallback">
+                                <input name="file" type="file" id="drop_val" multiple />
+                            </div>
+                            @csrf
+                        </form>
+                     </div>
                   </div>
               </div>
               <div id="reply_button">
@@ -259,6 +260,7 @@
               },
               dataType: false,
               success: function(data) {
+                console.log(data);
                   if(data.data = '1') {
                     $.toast({
                             heading: 'Sua resposta foi postada corretamente. Obrigada.',
