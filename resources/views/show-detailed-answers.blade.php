@@ -26,10 +26,10 @@
                           <h4 class="m-b-0 text-white"><i class="fas fa-book mr-2"></i>Respostas</h4>
                       </div>
                       <div class="card-body">
-                        @if(isset($answers))
-                          {{-- <p style="text-align:center">The answers doesn't exist still.</p> --}}
+                        @if (sizeof($answerslist) == "0")
+                            <p style="text-align: center">Sem respostas...</p>
                         @endif
-                        @foreach($answers as $answer) 
+                        @foreach($answerslist as $answer) 
                         <div class="answer-blog p-3">
                           <div class="d-flex justify-content-between mb-2">
                             <div class="d-flex">

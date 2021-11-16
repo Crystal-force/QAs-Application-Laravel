@@ -91,7 +91,7 @@
                 });
 
                 setTimeout(function() { 
-                    window.location.href="/show-detail-answer?id="+data.questionId
+                    window.location.href="/question-answerlist?id="+s_id
                 }, 3000);
               }
             }

@@ -33,12 +33,12 @@ class QuestionController extends Controller
 
     function GetAnswersList(Request $request) {
         $q_id = $request->id;
-        
+      
         $answerslist = Answers::where('q_id', $q_id)->get();
         $subject_id = Questions::where('id', $q_id)->first();
-        
+    
         return view('show-detailed-answers')->with([
-            'answers' => $answerslist,
+            'answerslist' => $answerslist,
             'subject_id' => $subject_id
         ]);
 
