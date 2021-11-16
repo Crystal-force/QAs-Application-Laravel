@@ -15,17 +15,26 @@
                   </div>
               </div>
               <div class="col-12">
-                  <h4>{{$question->q_title}}</h4>
-                  <p>{{$question->question}}</p>
+                  <div class="question-area">
+                    <div class="question-title">
+                        <h4 style="font-weight: 600; color:rgb(56, 56, 2)">Quesion</h4>
+                    </div>
+                    <h4>{{$question->q_title}}</h4>
+                    <p>{{$question->question}}</p>
+                  </div>
+                  <hr>
               </div>
               <div class="row col-12">
                 <div class="card" style="width: 100%">
                   <div class="card-body">
-                      <h4 class="card-title">Todas as respostas</h4>
+                      <h4 class="card-title" style="color: rgb(56, 56, 2)">Todas as respostas</h4>
                   </div>
                   <div class="comment-widgets m-b-20">
                       <!-- Comment Row -->
-                      @foreach($answers as $answers_list)
+                      @if (sizeof($showanswer) == "0")
+                            <p style="text-align: center">Sem respostas...</p>
+                      @endif
+                      @foreach($showanswer as $answers_list)
                       <hr>
                       <div class="d-flex flex-row comment-row">
                           <div class="p-2">

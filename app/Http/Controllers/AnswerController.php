@@ -38,7 +38,7 @@ class AnswerController extends Controller
 
         return view('answerslist')->with([
             'question' => $question_data,
-            'answers' => $answer_data
+            'showanswer' => $answer_data
         ]);
         
     }
