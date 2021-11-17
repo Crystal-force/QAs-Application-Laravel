@@ -27,9 +27,9 @@
                               <table class="table stylish-table">
                                   <thead>
                                       <tr>
-                                          <th style="width:60%">Questions</th>
-                                          <th>User</th>
-                                          <th>Date</th>
+                                          <th style="width:60%">Pergunta</th>
+                                          <th>Solver</th>
+                                          <th>Data</th>
                                           <th>Status</th>
                                       </tr>
                                   </thead>
@@ -46,11 +46,11 @@
                                           <td class="align-middle"><p data-id={{$question->statu}}>{{$question->updated_at}}</p></td>
                                           @if($question->statu == "0")
                                             <td class="align-middle">
-                                                <button type="button" class="btn btn-info" data-whatever="reply" data-id={{$question->id}} onclick="ReplyQuestion(this)"><i class="fas fa-reply"></i></button>
+                                                <button type="button" class="btn btn-success" data-whatever="reply" data-id={{$question->id}} onclick="ReplyQuestion(this)">Responder</button>
                                             </td>
                                           @else
                                           <td class="align-middle">
-                                             <span class="label label-warning">Respondidas</span>
+                                             <span class="btn btn-warning">Respondida</span>
                                           </td>
                                           @endif
                                       </tr>
@@ -65,7 +65,7 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex align-items-center">
-                            <h4 class="card-title">Suas respostas</h4>
+                            <h4 class="card-title">Respostas</h4>
                             <select class="custom-select w-25 ml-auto">
                                 <option selected="">All</option>
                                 <option value="1">Today</option>
@@ -84,7 +84,7 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      @foreach($answers as $Answers)
+                                      @foreach($replyanswers as $Answers)
                                       <tr class="each-question">
                                           <td>
                                               <p class="text-muted sm-question-content">{{$Answers->answers}}</p>
@@ -92,21 +92,14 @@
                                           <td class="align-middle">
                                               <h6>{{$Answers->Answers_user->name}}</h6>
                                           </td>
-                                          @if($Answers->read == "1")
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
-                                            {{-- <span class="label label-danger">selecionado</span> --}}
-                                            <span class="label label-success">leitura</span>
+                                            @if($Answers->read == "1")
+                                                <span>👍</span>
+                                            @elseif($Answers->read == "0")
+                                                <span class="label label-danger">Não lida</span>
+                                            @endif
                                           </td>
-                                          @elseif($Answers->read == "0")
-                                          <td class="align-middle">
-                                            <p>{{$Answers->updated_at}}</p>
-                                            {{-- <span class="label label-danger">selecionado</span> --}}
-                                            <span class="label label-danger">Não lida</span>
-                                          </td>
-                                          @endif
-                                          
-
                                           <td class="align-middle">
                                               <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
                                               <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta" data-id="{{$Answers->id}}" onclick="RemoveAnswers(this)"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
@@ -146,7 +139,15 @@
                         <label for="message-text" class="control-label">Responder:</label>
                         <textarea class="textarea_editor form-control" rows="13" placeholder="Digite o texto ..." id="answer_content"></textarea>
                         <p class="answer-alert">Por favor, insira as respostas corretas para esta pergunta.</p>  
-                    </div>
+                     </div>
+                     <div class="form-group">
+                        <form action="/upload-answers-file" method="post" class="dropzone">
+                            <div class="fallback">
+                                <input name="file" type="file" id="drop_val" multiple />
+                            </div>
+                            @csrf
+                        </form>
+                     </div>
                   </div>
               </div>
               <div id="reply_button">
@@ -174,6 +175,9 @@
                   <form id="detail_answer">
                      
                   </form>
+                  <div id="answer_files">
+
+                  </div>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -259,6 +263,7 @@
               },
               dataType: false,
               success: function(data) {
+                console.log(data);
                   if(data.data = '1') {
                     $.toast({
                             heading: 'Sua resposta foi postada corretamente. Obrigada.',
@@ -279,8 +284,8 @@
       }
 
       function DetailAnswers(elem) {
-          var s_id = '';
-          s_id = $(elem).attr('data-id');
+          var a_id = '';
+          a_id = $(elem).attr('data-id');
           
           $.ajaxSetup({
               headers: {
@@ -292,10 +297,11 @@
             url: '/detail-answer',
             method: 'POST',
             data: {
-                id: s_id
+                id: a_id
             },
             dataType: false,
             success: function(data) {
+                
                 var question_html = '';
                 question_html += '<div class="form-group">\n'+
                                     '<h6>'+data.question.q_title+'</h6>\n'+
@@ -308,8 +314,19 @@
                  var answer_html = '';
                  answer_html += '<div class="form-group">\n'+
                                     '<p>'+data.data.answers+'</p>\n'+
-                                '</div>';     
-                $("#detail_answer").html(answer_html);
+                                '</div>';
+                 $("#detail_answer").html(answer_html);
+
+                var count = data.answer_file.length;
+                for(var i=0; i<count; i++) {
+                    var answer_files = '';
+                    answer_files += '<div class="answerfile-area">\n'+
+                    '<p>Anexar arquivo</p>\n'+
+                    '<a href="/'+data.answer_file[i].file_path+'" target="_blank" class="answer_file">'+data.answer_file[i].file_name+'</a>\n'+
+                    '</div>';
+                }
+                $("#answer_files").html(answer_files);
+               
             }
           });
       }

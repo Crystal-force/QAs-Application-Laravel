@@ -26,6 +26,9 @@
                         <div class="card-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-body">
+                                  @if (sizeof($q_data) == "0")
+                                    <p style="text-align: center">Sem perguntas ...</p>
+                                  @endif
                                   @foreach($q_data as $q_data)
                                     <a href="show-detail-answer?id={{$q_data->id}}" data-id={{$q_data->id}}>
                                       <h4 style="font-weight: 500">{{$q_data->q_title}}</h4>

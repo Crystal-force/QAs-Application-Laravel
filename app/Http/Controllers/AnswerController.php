@@ -8,6 +8,7 @@ use App\Models\Questions;
 use App\Models\UploadFiles;
 use App\Models\Answers;
 use App\Models\Subjects;
+use App\Models\AnswerFile;
 
 class AnswerController extends Controller
 {
@@ -37,7 +38,7 @@ class AnswerController extends Controller
 
         return view('answerslist')->with([
             'question' => $question_data,
-            'answers' => $answer_data
+            'showanswer' => $answer_data
         ]);
         
     }
@@ -60,6 +61,8 @@ class AnswerController extends Controller
         return response()->json(['data' => '1']);
     }
 
+   
+
     public function ReplyAnswers(Request $request) {
         $u_id = \Auth::user()->id;
         $s_id = $request->id;
@@ -70,7 +73,7 @@ class AnswerController extends Controller
         return view('solution-post')->with([
             'subject' => $subject,
             'questions' => $questions,
-            'answers' => $answers
+            'replyanswers' => $answers
         ]);
     }
 
@@ -82,6 +85,32 @@ class AnswerController extends Controller
         return response()->json(['data' => $question, 'attampt' => $attampt]);
     }
 
+    public function UploadFile(Request $request) {
+        $target_dir = 'upload/answers_file/';
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $rand = rand();
+        $fileName = explode('.',$imageName);
+        $firstName = $fileName[0].$rand;
+        $secondName = $fileName[1];
+        if($secondName == 'png' ||$secondName == 'jpg' || $secondName == "pdf" || $secondName == "doc" || $secondName == "docx") {
+            $newName = $firstName.'.'.$secondName;
+
+            if (!is_dir($target_dir)) {
+                mkdir($target_dir, 0777, true);
+            }
+            $target_file = $target_dir . $newName;
+           
+            $msg = "";
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+            $msg = "Successfully uploaded";
+            } else {
+            $msg = "Error while uploading";
+            }
+            echo $msg;
+        }
+    }
+
     public function SendAnswer(Request $request) {
         $q_id = $request->id;
         $res = Questions::where('id', $q_id)->update(['statu' => "1"]);
@@ -90,31 +119,59 @@ class AnswerController extends Controller
         $s_id = Questions::where('id', $q_id)->first()->s_id;
         $unselect = "0";
         $unread = "0";
+
         $res = Answers::create([
             'u_id'=>$user_id, 'q_id'=>$q_id, 's_id'=>$s_id, 'answers'=>$answer, 'select' => $unselect, 'read' => $unread
         ]);
-        
+
+        $source_dir = 'upload/answers_file/';
+        $target_dir = 'storage/answers_file/';
+ 
+        if (!is_dir($target_dir)) {
+          if (!mkdir($target_dir, 0777, true)) {
+            echo 'fail';
+            exit;
+          }
+        }
+
+        foreach (scandir($source_dir) as $key => $file) {
+          if ($file == '.' || $file == '..')
+            continue;
+          copy($source_dir . $file, $target_dir . $file);
+          unlink($source_dir . $file);
+          $uploadFile = $target_dir . $file;
+          $a_id = $res->id;
+          $res_1 = AnswerFile::create([
+                'a_id'=>$a_id, 'file_path'=>$uploadFile, 'file_name'=>$file
+          ]);
+          
+        }
         return response()->json(['data' => '1']);
     }
 
     public function DetailAnswer(Request $request) {
-        $s_id = $request->id;
-        
-        $answer = Answers::where('id', $s_id)->first();
+        $a_id = $request->id;
+   
+        $answer = Answers::where('id', $a_id)->first();
+        $answer_file = AnswerFile::where('a_id', $a_id)->get();
         $question_id = $answer->q_id;
         $question = Questions::where('id', $question_id)->first();
         return response()->json([
             'data'=>$answer,
-            'question'=>$question
+            'question'=>$question,
+            'answer_file'=> $answer_file
         ]);
     }
 
     public function RemoveAnswer(Request $request) {
-        $s_id =$request->id;
+        $a_id =$request->id;
+        $q_id = Answers::where('id', $a_id)->first()->q_id;
+
+        $res_del= AnswerFile::where('a_id', $a_id)->delete();
+        $res_1 = Questions::where('id', $q_id)->update(['statu'=>'0']);
+        $res = Answers::find($a_id)->delete();
         
-        $res = Answers::find($s_id)->delete();
-        
-        if($res == true) {
+        if($res == true && $res_1 == true) {
             return response()->json(['data' => 'removed']);
         }
 

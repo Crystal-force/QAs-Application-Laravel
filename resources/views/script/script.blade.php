@@ -40,3 +40,22 @@
         $("#recoverform").fadeIn();
     });
     </script>
+
+    <script>
+    $(document).ready(function() {
+        if ($("#mymce").length > 0) {
+            tinymce.init({
+                selector: "textarea#mymce",
+                theme: "modern",
+                height: 200,
+                plugins: [
+                    "advlist autolink lists charmap print preview",
+                    "searchreplace wordcount visualchars fullscreen insertdatetime",
+                    "save contextmenu directionality emoticons paste textcolor"
+                ],
+                toolbar: "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+    });
+    </script>

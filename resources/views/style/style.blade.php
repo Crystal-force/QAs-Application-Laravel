@@ -2,7 +2,6 @@
 <link href="dist/css/pages/login-register-lock.css" rel="stylesheet">
 <link rel="stylesheet" href="../assets/node_modules/html5-editor/bootstrap-wysihtml5.css" />
 <link rel="stylesheet" href="../assets/node_modules/dropify/dist/css/dropify.min.css">
-<link rel="stylesheet" href="../assets/node_modules/html5-editor/bootstrap-wysihtml5.css" />
 <!-- Dropzone css -->
 <link href="../assets/node_modules/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
 <link href="../assets/node_modules/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet">

@@ -16,6 +16,10 @@ class Answers extends Model
         'read'
     ];
 
+    public function Answers_File() {
+        return $this->hasMany('App\Models\AnswerFile');
+    }
+
     public function Answers_user() {
         return $this->belongsTo('App\User', 'u_id', 'id');
     }

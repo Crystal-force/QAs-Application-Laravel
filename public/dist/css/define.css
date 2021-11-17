@@ -15,7 +15,14 @@
 .page-logo {
     text-align: center;
 }
-
+video {
+    object-fit: fill;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 .dashboard-area {
     display: flex;
     flex-direction: column;
@@ -28,15 +35,6 @@
 
 .dashboard-area aside {
     flex: 0;
-}
-
-.index-background {
-    flex: 1;
-    background-image: url('../../assets/images/background/background-2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow-y: auto;
 }
 
 .dashboard-background {
@@ -291,4 +289,10 @@
 
 .qa-logo {
     width: 200px
+}
+.answerfile-area p{
+    font-weight: 600; 
+}
+.answer_file {
+    color: black;
 }
