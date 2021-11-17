@@ -29,7 +29,10 @@
                         @if (sizeof($answerslist) == "0")
                             <p style="text-align: center">Sem respostas...</p>
                         @endif
-                        @foreach($answerslist as $answer) 
+                        @foreach($answerslist as $key => $answer) 
+                        @if ($key == 5)
+                            @break;
+                        @endif
                         <div class="answer-blog p-3">
                           <div class="d-flex justify-content-between mb-2">
                             <div class="d-flex">
@@ -41,11 +44,12 @@
                                   <small class="text-muted">From: {{$answer->Answers_user->email}}</small>
                               </div>
                             </div>
-                            <div>
+                            <div class="d-flex">
                               @if($answer->read == "1")
-                              <input type="checkbox" class="check answer-confirm" checked disabled>
+                              <input type="checkbox" class="check answer-confirm" checked disabled><p style="font-size: 22px">👍</p>
                               @elseif($answer->read == "0")
-                              <input type="checkbox" class="check answer-confirm" id="answer_status" data-id="{{$answer->id}}">
+                              <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div>
+                              <div class="d-flex align-items-center"><input type="checkbox" class="check answer-confirm" id="answer_status" data-id="{{$answer->id}}"><p style="font-size: 22px">👍</p></div>
                               @endif
                             </div>
                           </div>

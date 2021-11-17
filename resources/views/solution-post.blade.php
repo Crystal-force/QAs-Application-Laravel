@@ -27,9 +27,9 @@
                               <table class="table stylish-table">
                                   <thead>
                                       <tr>
-                                          <th style="width:60%">Questions</th>
-                                          <th>User</th>
-                                          <th>Date</th>
+                                          <th style="width:60%">Pergunta</th>
+                                          <th>Solver</th>
+                                          <th>Data</th>
                                           <th>Status</th>
                                       </tr>
                                   </thead>
@@ -46,11 +46,11 @@
                                           <td class="align-middle"><p data-id={{$question->statu}}>{{$question->updated_at}}</p></td>
                                           @if($question->statu == "0")
                                             <td class="align-middle">
-                                                <button type="button" class="btn btn-info" data-whatever="reply" data-id={{$question->id}} onclick="ReplyQuestion(this)"><i class="fas fa-reply"></i></button>
+                                                <button type="button" class="btn btn-success" data-whatever="reply" data-id={{$question->id}} onclick="ReplyQuestion(this)">Responder</button>
                                             </td>
                                           @else
                                           <td class="align-middle">
-                                             <span class="label label-warning">Respondidas</span>
+                                             <span class="btn btn-warning">Respondida</span>
                                           </td>
                                           @endif
                                       </tr>
@@ -65,7 +65,7 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex align-items-center">
-                            <h4 class="card-title">Suas respostas</h4>
+                            <h4 class="card-title">Respostas</h4>
                             <select class="custom-select w-25 ml-auto">
                                 <option selected="">All</option>
                                 <option value="1">Today</option>
@@ -84,7 +84,7 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      @foreach($answers as $Answers)
+                                      @foreach($replyanswers as $Answers)
                                       <tr class="each-question">
                                           <td>
                                               <p class="text-muted sm-question-content">{{$Answers->answers}}</p>
@@ -95,7 +95,7 @@
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
                                             @if($Answers->read == "1")
-                                                <span class="label label-success">leitura</span>
+                                                <span>👍</span>
                                             @elseif($Answers->read == "0")
                                                 <span class="label label-danger">Não lida</span>
                                             @endif

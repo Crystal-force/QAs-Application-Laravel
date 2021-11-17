@@ -69,10 +69,11 @@ class AnswerController extends Controller
         $subject = Subjects::where('id', $s_id)->first();
         $questions = Questions::where('s_id', $s_id)->get();
         $answers = Answers::where('s_id', $s_id)->where('u_id', $u_id)->get();
+        
         return view('solution-post')->with([
             'subject' => $subject,
             'questions' => $questions,
-            'answers' => $answers
+            'replyanswers' => $answers
         ]);
     }
 
