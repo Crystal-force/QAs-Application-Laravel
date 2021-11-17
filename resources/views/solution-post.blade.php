@@ -94,15 +94,17 @@
                                           </td>
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
-                                            @if($Answers->read == "1")
-                                                <span>👍</span>
-                                            @elseif($Answers->read == "0")
-                                                <span class="label label-danger">Não lida</span>
-                                            @endif
+                                           
                                           </td>
                                           <td class="align-middle">
+                                            
                                               <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
                                               <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta" data-id="{{$Answers->id}}" onclick="RemoveAnswers(this)"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
+                                              @if($Answers->read == "1")
+                                              <div>👍</div>
+                                              @elseif($Answers->read == "0")
+                                              <div>👎</div>
+                                              @endif
                                           </td>
                                       </tr>
                                       @endforeach
