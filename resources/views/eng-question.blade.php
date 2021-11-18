@@ -98,6 +98,16 @@
                     window.location.href="/question-answerlist?id="+s_id
                 }, 3000);
               }
+              else if(data.data == "0") {
+                $.toast({
+                    heading: 'Desculpa! A mesma pergunta já postada.',
+                    position: 'top-center',
+                    loaderBg:'#ff6849',
+                    icon: 'warning',
+                    hideAfter: 3000, 
+                    stack: 6
+                });
+              }
             }
           });
         }
