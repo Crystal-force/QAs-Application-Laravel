@@ -13,6 +13,6 @@ class Subjects extends Model
     ];
 
     public function Questions_List() {
-        return $this->hasMany('App\Models\Questions');
+        return $this->hasOne('App\Models\Questions');
     }
 }

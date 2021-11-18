@@ -35,10 +35,12 @@ class AnswerController extends Controller
         $id = $request->id;
         $answer_data = Answers::where('q_id', $id)->get();
         $question_data = Questions::where('id', $id)->first();
+        $question_files = UploadFiles::where('q_id', $id)->get();
 
         return view('answerslist')->with([
             'question' => $question_data,
-            'showanswer' => $answer_data
+            'showanswer' => $answer_data,
+            'question_files' => $question_files
         ]);
         
     }
@@ -67,8 +69,8 @@ class AnswerController extends Controller
         $u_id = \Auth::user()->id;
         $s_id = $request->id;
         $subject = Subjects::where('id', $s_id)->first();
-        $questions = Questions::where('s_id', $s_id)->get();
-        $answers = Answers::where('s_id', $s_id)->where('u_id', $u_id)->get();
+        $questions = Questions::where('s_id', $s_id)->orderBy('id', 'DESC')->get();
+        $answers = Answers::where('s_id', $s_id)->where('u_id', $u_id)->orderBy('id', 'DESC')->get();
         
         return view('solution-post')->with([
             'subject' => $subject,

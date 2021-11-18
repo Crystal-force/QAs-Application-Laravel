@@ -12,7 +12,7 @@
                     <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Sistema de logout</a></li>
                 </ul>
             </li>
-              <li> <a class="waves-effect waves-dark" href="{{route('select-category')}}" aria-expanded="false"><i class="icon-speedometer"></i>Painel</a></li>
+              <li> <a class="waves-effect waves-dark" href="{{route('select-category')}}" aria-expanded="false"><i class="icon-speedometer"></i>Pergunte ou Responda</a></li>
               <li> <a class="waves-effect waves-dark" href="{{route('ask-subject')}}" aria-expanded="false"><i class="fas fa-list-ul"></i>Sujeito</a></li>
               <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-question"></i><span class="hide-menu">Gestão de perguntas / respostas</span></a>
                 <ul aria-expanded="false" class="collapse">

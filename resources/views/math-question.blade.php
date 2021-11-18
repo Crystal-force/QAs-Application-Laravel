@@ -13,10 +13,10 @@
                 <div class="card-body">
                   <div class="row question-text">
                     <div class="card-body">
-                      <h3 class="card-title" style="text-align: center">Matemática pergunta</h3>
+                      <h3 class="card-title" style="text-align: center">Matemática</h3>
                       <div class="d-flex justify-content-between">
                         <a href="/question-answerlist?id={{$id}}" class="btn btn-primary btn-rounded"><i class="far fa-smile"></i> Minhas perguntas</a>
-                        <button type="button" class="btn waves-effect waves-light btn-rounded btn-info" data-id="{{$id}}" onclick="Post_Question(this)"><i class="fas fa-upload mr-1"></i>Pergantar</button>
+                        <button type="button" class="btn waves-effect waves-light btn-rounded btn-info" data-id="{{$id}}" onclick="Post_Question(this)"><i class="fas fa-upload mr-1"></i>enviar pergunta</button>
                       </div>
                       <div class="form-group mt-2">
                           <input class="form-control" placeholder="Título:" id="question_title">
@@ -93,6 +93,16 @@
                 setTimeout(function() { 
                     window.location.href="/question-answerlist?id="+s_id
                 }, 3000);
+              }
+              else if(data.data == "0") {
+                $.toast({
+                    heading: 'Desculpa! A mesma pergunta já postada.',
+                    position: 'top-center',
+                    loaderBg:'#ff6849',
+                    icon: 'warning',
+                    hideAfter: 3000, 
+                    stack: 6
+                });
               }
             }
           });

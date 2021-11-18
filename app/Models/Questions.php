@@ -20,7 +20,7 @@ class Questions extends Model
     }
    
     public function UploadFile_List() {
-        return $this->hasMany('App\Models\UploadFiles',);
+        return $this->hasOne('App\Models\UploadFiles');
     }
 
     public function Question_user() {

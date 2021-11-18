@@ -21,6 +21,12 @@
                     </div>
                     <h4>{{$question->q_title}}</h4>
                     <p>{{$question->question}}</p>
+                    <div class="attach-file">
+                        <p>Attach files:</p>
+                        @foreach($question_files as $files)
+                        <a href="{{$files->file_path}}" target="_blank">{{$files->file_name}}</a>
+                        @endforeach
+                    </div>
                   </div>
                   <hr>
               </div>
@@ -49,6 +55,9 @@
                               </div>
                               <p class="m-b-5 m-t-10">{{$answers_list->answers}}</p>
                           </div>
+                      </div>
+                      <div>
+                        {{$answers_list}}
                       </div>
                       @endforeach
                   </div>

@@ -35,11 +35,13 @@ class QuestionController extends Controller
         $q_id = $request->id;
       
         $answerslist = Answers::where('q_id', $q_id)->get();
-        $subject_id = Questions::where('id', $q_id)->first();
-    
+        $posted_question = Questions::where('id', $q_id)->first();
+        $subject_id = $posted_question->s_id;
+
         return view('show-detailed-answers')->with([
             'answerslist' => $answerslist,
-            'subject_id' => $subject_id
+            
+            'subject_id' => $posted_question
         ]);
 
     }
@@ -116,42 +118,52 @@ class QuestionController extends Controller
         $q_title = $request->q_title;
         $question = $request->question;
         $initial_val = "0";
-        $res = Questions::create([
-            'u_id' => $u_id, 's_id'=> $s_id, 'q_title' => $q_title, 'question' => $question, 'statu' => $initial_val
-        ]);
-        $question_id = $res->id;
-        $source_dir = 'upload/question_file/';
-        $target_dir = 'storage/questions_file/';
-
-        if (!is_dir($target_dir)) {
-          if (!mkdir($target_dir, 0777, true)) {
-            echo 'fail';
-            exit;
-          }
-        }
-
-        foreach (scandir($source_dir) as $key => $file) {
-          if ($file == '.' || $file == '..')
-            continue;
-          copy($source_dir . $file, $target_dir . $file);
-          unlink($source_dir . $file);
-          $uploadFile = $target_dir . $file;
-          
-          $q_id = $res->id;
+  
+        $preview_question = Questions::where('q_title', $q_title)->first();
         
-          $res_1 = UploadFiles::create([
-                'q_id'=>$q_id, 'file_path'=>$uploadFile, 'file_name'=>$file
-          ]);
-          
+        if(is_null($preview_question)) {
+            $res = Questions::create([
+                'u_id' => $u_id, 's_id'=> $s_id, 'q_title' => $q_title, 'question' => $question, 'statu' => $initial_val
+            ]);
+            $question_id = $res->id;
+            $source_dir = 'upload/question_file/';
+            $target_dir = 'storage/questions_file/';
+    
+            if (!is_dir($target_dir)) {
+              if (!mkdir($target_dir, 0777, true)) {
+                echo 'fail';
+                exit;
+              }
+            }
+    
+            foreach (scandir($source_dir) as $key => $file) {
+              if ($file == '.' || $file == '..')
+                continue;
+              copy($source_dir . $file, $target_dir . $file);
+              unlink($source_dir . $file);
+              $uploadFile = $target_dir . $file;
+              
+              $q_id = $res->id;
+            
+              $res_1 = UploadFiles::create([
+                    'q_id'=>$q_id, 'file_path'=>$uploadFile, 'file_name'=>$file
+              ]);
+              
+            }
+            $success = "success";
+            return response()->json(['data' => $success, 'questionId' => $question_id]);
         }
-        $success = "success";
-        return response()->json(['data' => $success, 'questionId' => $question_id]);
+        else {
+            return response()->json(['data'=>'0']);
+        }
+        
+        
     }
     
     public function AllQuestions() {
         $u_id = \Auth::user()->id;
         $questions = Questions::where('u_id', $u_id)->orderBy('id', 'DESC')->get();
-
+        
         return view('allquestions')->with([
             'questions' => $questions
         ]);

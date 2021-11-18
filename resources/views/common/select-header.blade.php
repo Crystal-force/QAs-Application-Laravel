@@ -26,7 +26,7 @@
               <li class="nav-item"> <a class="nav-link sidebartoggler d-none waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
           </ul>
           <ul class="navbar-nav my-lg-0" style="align-items: center;">
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="ti-email"></i>
                         <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </a>
@@ -43,9 +43,37 @@
                                     @break;
                                     @endif
                                     <a href="/alert-show-answer?id={{$answer->id}}">
-                                        <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
+                                        <div class="btn btn-warning btn-circle"><i class="far fa-envelope"></i></div>
                                         <div class="mail-contnet">
                                             <h5>{{$answer->Answers_user->name}}</h5> <span class="mail-desc">{{$answer->answers}}</span> <span class="time">{{$answer->updated_at}}</span> </div>
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li> --}}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="far fa-question-circle"></i>
+                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
+                        <ul>
+                            <li>
+                                <div class="drop-title">Novas questões</div>
+                            </li>
+                            <li>
+                                <div class="message-center">
+                                    <!-- Message -->
+                                    @foreach($questions_list as $key => $question)
+                                    @if($key == "4")
+                                    @break;
+                                    @endif
+                                    <a href="/solution?id={{$question->Subjects_List->id}}">
+                                        <div class="btn btn-info btn-circle"><i class="fas fa-question"></i></div>
+                                        <div class="mail-contnet">
+                                            <h5 class="mail-desc">{{$question->q_title}}</h5> <span class="mail-desc">{{$question->question}}</span> <span class="time">{{$question->updated_at}}</span> </div>
                                     </a>
                                     @endforeach
                                 </div>

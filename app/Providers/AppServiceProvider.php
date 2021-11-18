@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Answers;
+use App\Models\Questions;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,8 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function($view) {
             $answers = Answers::where('read', '0')->orderBy('id', 'DESC')->get();
-            return $view->with(['answers' => $answers]);
+            $questions_list = Questions::orderBy('id', 'DESC')->get();
+            return $view->with(['answers' => $answers, 'questions_list' => $questions_list]);
         });
     }
 }

@@ -15,7 +15,7 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex align-items-center">
-                            <h4 class="card-title">As perguntas que você pode responder.</h4>
+                            <h4 class="card-title">Perguntas recentes</h4>
                             <select class="custom-select w-25 ml-auto">
                                 <option selected="">All</option>
                                 <option value="1">Today</option>
@@ -65,7 +65,7 @@
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex align-items-center">
-                            <h4 class="card-title">Respostas</h4>
+                            <h4 class="card-title">Respostas recentes</h4>
                             <select class="custom-select w-25 ml-auto">
                                 <option selected="">All</option>
                                 <option value="1">Today</option>
@@ -94,15 +94,17 @@
                                           </td>
                                           <td class="align-middle">
                                             <p>{{$Answers->updated_at}}</p>
-                                            @if($Answers->read == "1")
-                                                <span>👍</span>
-                                            @elseif($Answers->read == "0")
-                                                <span class="label label-danger">Não lida</span>
-                                            @endif
+                                           
                                           </td>
                                           <td class="align-middle">
+                                            
                                               <a href="javascript:;" data-toggle="modal" data-target="#replyAnswerModal" data-whatever="reply" data-id="{{$Answers->id}}" onclick="DetailAnswers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
                                               <a href="javascript:;" data-toggle="tooltip" title="Remover uma pergunta" data-id="{{$Answers->id}}" onclick="RemoveAnswers(this)"> <i class="mdi mdi-delete-forever text-primary remove-icon"></i></a>
+                                              @if($Answers->read == "1")
+                                              <div>👍</div>
+                                              @elseif($Answers->read == "0")
+                                              <div>👎</div>
+                                              @endif
                                           </td>
                                       </tr>
                                       @endforeach
@@ -275,7 +277,7 @@
                      });
 
                     setTimeout(function() { 
-                        location.reload();
+                        window.location.reload(true);
                     }, 3000);
                   }
               }

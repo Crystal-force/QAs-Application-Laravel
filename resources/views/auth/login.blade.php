@@ -140,12 +140,6 @@
                 }
             });
         }
-        
-
-
-        
-      
-    //   document.location.href = "/select-category"
     }
   </script>
 @endsection
