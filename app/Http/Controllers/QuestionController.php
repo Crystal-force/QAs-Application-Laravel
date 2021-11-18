@@ -163,7 +163,7 @@ class QuestionController extends Controller
     public function AllQuestions() {
         $u_id = \Auth::user()->id;
         $questions = Questions::where('u_id', $u_id)->orderBy('id', 'DESC')->get();
-
+        
         return view('allquestions')->with([
             'questions' => $questions
         ]);
