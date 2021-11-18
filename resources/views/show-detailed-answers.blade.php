@@ -46,6 +46,7 @@
                             </div>
                             <div class="d-flex">
                               @if($answer->read == "1")
+                              <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div>
                               <input type="checkbox" class="check answer-confirm" checked disabled><p style="font-size: 22px">👍</p>
                               @elseif($answer->read == "0")
                               <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div>

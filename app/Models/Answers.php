@@ -17,7 +17,7 @@ class Answers extends Model
     ];
 
     public function Answers_File() {
-        return $this->hasMany('App\Models\AnswerFile');
+        return $this->hasMany(AnswerFile::class, 'a_id', 'id');
     }
 
     public function Answers_user() {
@@ -25,7 +25,7 @@ class Answers extends Model
     }
 
     public function Question_List() {
-        return $this->belongsTo('App\Models\Questions');
+        return $this->belongsTo('App\Models\Questions', 'q_id', 'id');
     }
 
 }

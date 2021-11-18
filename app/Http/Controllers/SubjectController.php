@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
-    public function Index() {
+    public function Index(Request $request) {
+        $select_id = $request->id;
         $subject = DB::table('subjects')->get();
         if(isset($subject)) {
             return view('question-subject')->with([
@@ -17,7 +18,8 @@ class SubjectController extends Controller
         }
     }
 
-    public function SolutionSubject() {
+    public function SolutionSubject(Request $request) {
+        $select_id = $request->id;
         $subject = DB::table('subjects')->get();
         if(isset($subject)) {
             return view('solution-subject')->with([

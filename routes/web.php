@@ -27,8 +27,8 @@ Route::get('/logout', 'Auth\LoginController@LogOut')->name('logout');
 Route::middleware(['auth'])->group(function(){
     // Auth::routes();
     Route::get('/select-category', 'CategoryController@Index')->name('select-category')->middleware('auth');
-    Route::get('/ask-subject', 'SubjectController@Index')->name('ask-subject')->middleware('auth');
-    Route::get('/solution-subject', 'SubjectController@SolutionSubject')->name('solution-subject')->middleware('auth');
+    Route::get('/ask-subject/{id?}', 'SubjectController@Index')->name('ask-subject')->middleware('auth');
+    Route::get('/solution-subject/{id?}', 'SubjectController@SolutionSubject')->name('solution-subject')->middleware('auth');
     Route::get('/question', 'QuestionController@Index')->name('question')->middleware('auth');
     Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
     Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
