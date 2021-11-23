@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                          Você não tem uma conta? <a href="{{route('reigster')}}" class="text-info m-l-5"><b>Inscrever-se</b></a>
+                          Você não tem uma conta? <a href="{{route('reigster')}}" class="text-info m-l-5"><b>Se inscreva</b></a>
                         </div>
                     </div>
                 </form>
@@ -109,7 +109,7 @@
             success: function(data) {
                 if(data.data == "1") {
                     $.toast({
-                        heading: 'Bem-vindo ao Silver Or Silver',
+                        heading: 'O login foi realizado com sucesso',
                         text: 'O login foi bem-sucedido.',
                         position: 'top-right',
                         loaderBg:'#ff6849',
