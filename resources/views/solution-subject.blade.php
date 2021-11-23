@@ -5,7 +5,6 @@
     <div class="dashboard-area">
       
         @include('common.top-header')
-        @include('common.solution-menu')
 
         <div class="dashboard-background" >
             <div class="container-fluid mt-5">
@@ -32,7 +31,6 @@
               </div>
             </div>
         </div>
-        @include('common.footer')
     </div>
     <script>
       function MathSolutions(elem) {
