@@ -46,8 +46,8 @@
                                       <div class="col-12">
                                         <p><i class="fa fa-paperclip m-r-10 m-b-10"></i>Anexos</p>
                                         <div>
-                                          <a href="/{{$q_data->Question_files}}" class="attachment" target="_blank">
-                                            <p>{{$q_data->Question_files}}</p>
+                                          <a href="/{{$q_data->UploadFile_List->file_path}}" class="attachment" target="_blank">
+                                            <p>{{$q_data->UploadFile_List->file_name}}</p>
                                           </a>
                                         </div>
                                       </div>

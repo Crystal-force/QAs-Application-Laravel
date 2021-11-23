@@ -39,9 +39,6 @@
                                                 <p style="font-weight:600">{{$questions->q_title}}</p>
                                                 <p class="sm-question-content">{{$questions->question}}</p>
                                             </td>
-                                            <td>
-                                                {{$questions->Subjects_List->name}}
-                                            </td>
                                             <td class="align-middle" style="text-align: center">{{$questions->updated_at}}</td>
                                             <td class="align-middle" style="text-align: center">
                                                 <a href="show-answers?id={{$questions->id}}" data-toggle="tooltip" title="Mostre a resposta detalhada" data-id={{$questions->id}}><i class="fas fa-eye text-success show-icon"></i> </a>

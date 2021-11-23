@@ -23,10 +23,6 @@
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="d-flex no-block align-items-center">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Lembre de mim</label>
-                                </div> 
                                 <div class="ml-auto">
                                     <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Esqueci o pwd?</a> 
                                 </div>
@@ -77,17 +73,9 @@
   <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
   <script>
     function SignIn() {
-        var check_status = "";
+        var check_status = "1";
         var email = $('#login_email').val();
         var password = $('#login_password').val();
-      
-        if ($('#customCheck1').is(":checked"))
-        {
-            check_status = '1';
-        }
-        else {
-            check_status = '0';
-        }
         
         if(email == "" && password != "") {
             $("#email_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow');
@@ -103,43 +91,43 @@
             $("#check_alert").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
         }
 
-        if ($('#customCheck1').is(":checked")) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+      
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-            $.ajax({
-                url: '/login',
-                method: 'POST',
-                data: {
-                    email: email,
-                    password: password
-                },
-                dataType: false,
-                success: function(data) {
-                    if(data.data == "1") {
-                        $.toast({
-                            heading: 'Bem-vindo ao Silver Or Silver',
-                            text: 'O login foi bem-sucedido.',
-                            position: 'top-right',
-                            loaderBg:'#ff6849',
-                            icon: 'success',
-                            hideAfter: 3000, 
-                            stack: 6
-                        });
+        $.ajax({
+            url: '/login',
+            method: 'POST',
+            data: {
+                email: email,
+                password: password
+            },
+            dataType: false,
+            success: function(data) {
+                if(data.data == "1") {
+                    $.toast({
+                        heading: 'Bem-vindo ao Silver Or Silver',
+                        text: 'O login foi bem-sucedido.',
+                        position: 'top-right',
+                        loaderBg:'#ff6849',
+                        icon: 'success',
+                        hideAfter: 3000, 
+                        stack: 6
+                    });
 
-                        setTimeout(function() { 
-                            window.location.href="/select-category"
-                        }, 3000);
-                    }
-                    else if(data.data == "0") {
-                        $("#fault_login").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
-                    }
+                    setTimeout(function() { 
+                        window.location.href="/select-category"
+                    }, 3000);
                 }
-            });
-        }
+                else if(data.data == "0") {
+                    $("#fault_login").delay(5).fadeIn('slow').delay(1500).fadeOut('slow'); 
+                }
+            }
+        });
+       
     }
   </script>
 @endsection
