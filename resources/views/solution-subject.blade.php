@@ -31,6 +31,7 @@
               </div>
             </div>
         </div>
+        @include('common.footer')
     </div>
     <script>
       function MathSolutions(elem) {
