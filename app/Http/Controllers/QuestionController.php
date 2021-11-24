@@ -172,6 +172,14 @@ class QuestionController extends Controller
         ]);
     }
 
+    public function TotalQuestions() {
+        $total_questions = Questions::orderBy('id', 'DESC')->get();
+        
+        return view('totalquestions')->with([
+            'total_questions' => $total_questions
+        ]);
+    }
+
     public function RemoveQuestion(Request $request) {
         $id = $request->id;
         

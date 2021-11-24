@@ -10,7 +10,7 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('allquestions')}}" class="btn btn-success d-none d-lg-block m-l-15"><i class="fas fa-redo-alt"></i> Todas as questões</a>
+                          <a href="javascript:;" class="btn btn-success d-none d-lg-block m-l-15" onclick="BackPage()"><i class="fas fa-redo-alt"></i> Voltar para as perguntas</a>
                       </div>
                   </div>
               </div>
@@ -66,5 +66,9 @@
           </div>
         </div>
     </div>
-    
+    <script>
+        function BackPage() {
+            window.history.go(-1)
+        }
+    </script>
 @endsection
