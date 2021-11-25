@@ -24,7 +24,7 @@
                         <div class="col-md-12">
                             <div class="d-flex no-block align-items-center">
                                 <div class="ml-auto">
-                                    <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Esqueci o pwd?</a> 
+                                    <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Esqueci a senha?</a> 
                                 </div>
                             </div>
                             <p class="register-alert" id="check_alert">Por favor, checar isto.</p>

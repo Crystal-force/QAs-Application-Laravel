@@ -31,6 +31,7 @@
                                           <th>Solver</th>
                                           <th>Data</th>
                                           <th>Status</th>
+                                          <th>View</th>
                                       </tr>
                                   </thead>
                                   <tbody>
@@ -53,6 +54,13 @@
                                              <span class="btn btn-warning">Respondida</span>
                                           </td>
                                           @endif
+                                          <td class="align-middle">
+                                             @if(count($question->Answers_List)=="0")
+                                                <p style="color:rgb(235, 42, 42);text-align:center">sem resposta</p>
+                                             @else
+                                                <a href="javascript:;" data-toggle="modal" data-target="#AnswerListModal" data-whatever="reply" data-id="{{$question->Answers_List[0]->q_id}}" onclick="Answers(this)"><i class="fas fa-eye text-success show-icon"></i> </a>
+                                             @endif
+                                          </td>
                                       </tr>
                                       @endforeach
                                   </tbody>
@@ -175,6 +183,30 @@
                   <hr class="mt-1 mb-1">
                   <h5 style="font-weight: 400;"><i class="far fa-edit mr-1"></i>Answer</h5>
                   <form id="detail_answer">
+                     
+                  </form>
+                  <div id="answer_files">
+
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    {{-- Show the answerslist --}}
+    <div class="modal fade" id="AnswerListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel1" style="font-weight:500">Responder</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                  <h5 style="font-weight: 400;"><i class="far fa-edit mr-1"></i>Answer</h5>
+                  <form id="answerslist">
                      
                   </form>
                   <div id="answer_files">
@@ -365,6 +397,37 @@
                         }, 3000);
                     }
                 }
+          });
+      }
+
+      function Answers(elem) {
+          var q_id = '';
+          q_id = $(elem).attr('data-id');
+          
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+          $.ajax({
+              url:'/answerslist',
+              method: 'post',
+              data: {
+                  q_id: q_id
+              },
+              dataType: false,
+              success: function(data) {
+                  var count = data.data.length;
+                  var answerslist = '';
+                  for(var i=0; i<count; i++) {
+                      answerslist += 
+                                    '<div class="form-group">\n'+
+                                        '<p>'+data.data[i].answers+'</p>\n'+
+                                    '</div>\n'+
+                                    '<hr>';
+                  }
+                  $("#answerslist").html(answerslist);
+              }
           });
       }
     </script>

@@ -72,12 +72,23 @@ class AnswerController extends Controller
         $questions = Questions::where('s_id', $s_id)->orderBy('id', 'DESC')->get();
         $answers = Answers::where('s_id', $s_id)->where('u_id', $u_id)->orderBy('id', 'DESC')->get();
         
+        $str_answers = str_replace('<br>', ' ', $answers);
+      
         return view('solution-post')->with([
             'subject' => $subject,
             'questions' => $questions,
             'replyanswers' => $answers
         ]);
     }
+
+
+    public function AnswersList(Request $request) {
+        $q_id = $request->q_id;
+        $answerslist = Answers::where('q_id', $q_id)->get();
+    
+        return response()->json(['data' => $answerslist]);
+    }
+
 
     public function ReplyAnswer(Request $request) {
         $q_id = $request->id;

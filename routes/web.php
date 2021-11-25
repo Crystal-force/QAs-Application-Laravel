@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
     Route::post('/detail-answer', 'AnswerController@DetailAnswer')->middleware('auth');
+    Route::post('/answerslist', 'AnswerController@AnswersList')->middleware('auth');
     Route::post('/remove-answers', 'AnswerController@RemoveAnswer')->middleware('auth');
     Route::post('/remove-question', 'QuestionController@RemoveQuestion')->middleware('auth');
 
