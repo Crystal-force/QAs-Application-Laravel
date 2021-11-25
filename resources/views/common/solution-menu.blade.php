@@ -16,7 +16,8 @@
               <li> <a class="waves-effect waves-dark" href="{{route('solution-subject')}}" aria-expanded="false"><i class="fas fa-list-ul"></i>Sujeito</a></li>
               <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-question"></i><span class="hide-menu">Gestão de perguntas/respostas</span></a>
                 <ul aria-expanded="false" class="collapse">
-                    <li><a href="{{route('allquestions')}}">Todas as perguntas/respostas</a></li>
+                    <li><a href="{{route('allquestions')}}">Minhas perguntas /respostas</a></li>
+                    <li><a href="{{route('totalquestions')}}">Todas as perguntas / respostas</a></li>
                 </ul>
               </li>
               <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">Configuração</span></a>

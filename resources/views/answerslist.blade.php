@@ -10,19 +10,19 @@
               <div class="row page-titles">
                   <div class="col-md-12 align-self-center text-right">
                       <div class="d-flex justify-content-end align-items-center">
-                          <a href="{{route('allquestions')}}" class="btn btn-success d-none d-lg-block m-l-15"><i class="fas fa-redo-alt"></i> Todas as questões</a>
+                          <a href="javascript:;" class="btn btn-success d-none d-lg-block m-l-15" onclick="BackPage()"><i class="fas fa-redo-alt"></i> Voltar para as perguntas</a>
                       </div>
                   </div>
               </div>
               <div class="col-12">
                   <div class="question-area">
                     <div class="question-title">
-                        <h4 style="font-weight: 600; color:rgb(56, 56, 2)">Quesion</h4>
+                        <h4 style="font-weight: 600; color:rgb(56, 56, 2)">Pergunta</h4>
                     </div>
                     <h4>{{$question->q_title}}</h4>
-                    <p>{{$question->question}}</p>
+                    <p>{!!$question->question!!}</p>
                     <div class="attach-file">
-                        <p>Attach files:</p>
+                        <p>Anexar arquivos:</p>
                         @foreach($question_files as $files)
                         <a href="{{$files->file_path}}" target="_blank">{{$files->file_name}}</a>
                         @endforeach
@@ -53,11 +53,8 @@
                               <div class="comment-footer">
                                   <span class="date">{{$answers_list->updated_at}}</span>
                               </div>
-                              <p class="m-b-5 m-t-10">{{$answers_list->answers}}</p>
+                              <p class="m-b-5 m-t-10">{!!$answers_list->answers!!}</p>
                           </div>
-                      </div>
-                      <div>
-                        {{$answers_list}}
                       </div>
                       @endforeach
                   </div>
@@ -66,5 +63,9 @@
           </div>
         </div>
     </div>
-    
+    <script>
+        function BackPage() {
+            window.history.go(-1)
+        }
+    </script>
 @endsection

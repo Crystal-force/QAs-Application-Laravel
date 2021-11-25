@@ -5,7 +5,6 @@
     <div class="dashboard-area">
       
         @include('common.top-header')
-        @include('common.aside-menu')
 
         <div class="dashboard-background" >
             <div class="container-fluid mt-5">

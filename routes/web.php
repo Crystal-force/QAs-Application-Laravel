@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/question-upload', 'QuestionController@UploadQuestion')->middleware('auth');
     Route::get('/answers/{id?}', 'AnswerController@Index')->name('answers')->middleware('auth');
     Route::get('/allquestions', 'QuestionController@AllQuestions')->name('allquestions')->middleware('auth');
+    Route::get('/totalquestions', 'QuestionController@TotalQuestions')->name('totalquestions')->middleware('auth');
     Route::get('/show-answers/{id?}','AnswerController@ShowAnswer')->middleware('auth');
     Route::post('/answer-readed', 'AnswerController@AnswerState')->middleware('auth');
     Route::get('/solution/{id?}', 'AnswerController@ReplyAnswers')->middleware('auth');
@@ -46,6 +47,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/reply-answer', 'AnswerController@ReplyAnswer')->middleware('auth');
     Route::post('/send-answer', 'AnswerController@SendAnswer')->middleware('auth');
     Route::post('/detail-answer', 'AnswerController@DetailAnswer')->middleware('auth');
+    Route::post('/answerslist', 'AnswerController@AnswersList')->middleware('auth');
     Route::post('/remove-answers', 'AnswerController@RemoveAnswer')->middleware('auth');
     Route::post('/remove-question', 'QuestionController@RemoveQuestion')->middleware('auth');
 

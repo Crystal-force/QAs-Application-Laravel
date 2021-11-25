@@ -24,9 +24,12 @@ class QuestionController extends Controller
         $u_id = \Auth::user()->id;
         
         $questions = Questions::where('u_id', $u_id)->where('s_id', $s_id)->orderBy('id', 'DESC')->get();
+      
+        $question_files = UploadFiles::where('q_id', $questions[0]->id)->get();
         
         return view('question-answers')->with([
             'q_data' => $questions,
+            'q_files' => $question_files,
             'subject_id' => $s_id
         ]);
     }
@@ -166,6 +169,14 @@ class QuestionController extends Controller
         
         return view('allquestions')->with([
             'questions' => $questions
+        ]);
+    }
+
+    public function TotalQuestions() {
+        $total_questions = Questions::orderBy('id', 'DESC')->get();
+        
+        return view('totalquestions')->with([
+            'total_questions' => $total_questions
         ]);
     }
 

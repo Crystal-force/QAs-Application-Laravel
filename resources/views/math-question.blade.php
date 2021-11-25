@@ -51,7 +51,7 @@
         title = $("#question_title").val();
         question = tinymce.activeEditor.getContent({ format: "text" });
         s_id = $(elem).attr('data-id');
-
+    
         if(title == "" || question == "") {
           $.toast({
             text: 'Escreva o título e as perguntas corretamente.',
