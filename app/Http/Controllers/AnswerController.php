@@ -60,6 +60,7 @@ class AnswerController extends Controller
         $id = $request->id;
       
         $res = Answers::where('id', $id)->update(array('read' => $statu));
+        
         return response()->json(['data' => '1']);
     }
 

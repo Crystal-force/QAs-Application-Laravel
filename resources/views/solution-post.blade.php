@@ -39,7 +39,7 @@
                                       <tr class="each-question">
                                           <td>
                                               <h6>{{$question->q_title}}</h6>
-                                              <small class="text-muted sm-question-content">{{$question->question}}</small>
+                                              <small class="text-muted sm-question-content">{!!$question->question!!}</small>
                                           </td>
                                           <td class="align-middle">
                                               <h6>{{$question->Question_user->name}}</h6>
@@ -95,7 +95,7 @@
                                       @foreach($replyanswers as $Answers)
                                       <tr class="each-question">
                                           <td>
-                                              <p class="text-muted sm-question-content">{{$Answers->answers}}</p>
+                                              <p class="text-muted sm-question-content">{!!$Answers->answers!!}</p>
                                           </td>
                                           <td class="align-middle">
                                               <h6>{{$Answers->Answers_user->name}}</h6>
@@ -111,7 +111,7 @@
                                               @if($Answers->read == "1")
                                               <div>👍</div>
                                               @elseif($Answers->read == "0")
-                                              <div>👎</div>
+                                              <div>🖐</div>
                                               @endif
                                           </td>
                                       </tr>

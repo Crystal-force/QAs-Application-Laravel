@@ -46,16 +46,16 @@
                             </div>
                             <div class="d-flex">
                               @if($answer->read == "1")
-                              <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div>
+                              {{-- <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div> --}}
                               <input type="checkbox" class="check answer-confirm" checked disabled><p style="font-size: 22px">👍</p>
                               @elseif($answer->read == "0")
-                              <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div>
+                              {{-- <div class="d-flex align-items-center mr-2"><input type="checkbox" class="check answer-confirm"><p style="font-size: 22px">👎</p></div> --}}
                               <div class="d-flex align-items-center"><input type="checkbox" class="check answer-confirm" id="answer_status" data-id="{{$answer->id}}"><p style="font-size: 22px">👍</p></div>
                               @endif
                             </div>
                           </div>
                           <div class="">
-                            <p>{{$answer->answers}}</p>
+                            <p>{!!$answer->answers!!}</p>
                           </div>
                         </div>
                         <hr class="mt-4 mb-4">
