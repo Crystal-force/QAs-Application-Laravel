@@ -20,13 +20,17 @@ class QuestionController extends Controller
     }
 
     public function QuestionAnswerList(Request $request) {
+     
         $s_id = $request->id;
         $u_id = \Auth::user()->id;
-        
+   
         $questions = Questions::where('u_id', $u_id)->where('s_id', $s_id)->orderBy('id', 'DESC')->get();
-      
-        $question_files = UploadFiles::where('q_id', $questions[0]->id)->get();
-        
+        if(sizeof($questions) != '0') {
+            $question_files = UploadFiles::where('q_id', $questions[0]->id)->get();
+        }
+        else {
+            $question_files = "0";
+        }
         return view('question-answers')->with([
             'q_data' => $questions,
             'q_files' => $question_files,
