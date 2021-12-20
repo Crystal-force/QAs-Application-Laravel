@@ -89,7 +89,7 @@
                 });
 
                 setTimeout(function() { 
-                    window.location.href="//question-answerlist?id="+s_id;
+                    window.location.href="/question-answerlist?id="+s_id;
                 }, 3000);
               }
               else if(data.data == "0") {
