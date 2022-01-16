@@ -27,4 +27,14 @@ class SubjectController extends Controller
             ]);
         }
     }
+
+    public function Simulate(Request $request) {
+        $select_id = $request ->id;
+        $simulates = DB::table('simulates')->get();
+        if(isset($simulates)) {
+            return view('simulates')->with([
+                'simulates' => $simulates
+            ]);
+        }
+    }
 }
