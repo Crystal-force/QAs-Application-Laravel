@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/select-category', 'CategoryController@Index')->name('select-category')->middleware('auth');
     Route::get('/ask-subject/{id?}', 'SubjectController@Index')->name('ask-subject')->middleware('auth');
     Route::get('/solution-subject/{id?}', 'SubjectController@SolutionSubject')->name('solution-subject')->middleware('auth');
+    Route::get('/simulate/{id?}', 'SubjectController@Simulate')->name('simulate')->middleware('auth');
+    Route::get('/institution/{id?}', 'SimluateController@Institution')->name('institution')->middleware('auth');
     Route::get('/question', 'QuestionController@Index')->name('question')->middleware('auth');
     Route::get('/question-answerlist/{id?}', 'QuestionController@QuestionAnswerList')->middleware('auth');
     Route::get('/show-detail-answer/{id?}', 'QuestionController@GetAnswersList')->middleware('auth');
