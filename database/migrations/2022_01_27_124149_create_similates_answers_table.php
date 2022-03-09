@@ -15,6 +15,7 @@ class CreateSimilatesAnswersTable extends Migration
     {
         Schema::create('similates_answers', function (Blueprint $table) {
             $table->id();
+            $table->string('question_id');
             $table->string('answers');
             $table->string('statu');
             $table->timestamps();

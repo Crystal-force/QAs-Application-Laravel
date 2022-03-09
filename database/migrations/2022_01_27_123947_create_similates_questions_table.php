@@ -15,7 +15,9 @@ class CreateSimilatesQuestionsTable extends Migration
     {
         Schema::create('similates_questions', function (Blueprint $table) {
             $table->id();
+            $table->string('simulation_id');
             $table->string('questions');
+            $table->string('score');
             $table->timestamps();
         });
     }
